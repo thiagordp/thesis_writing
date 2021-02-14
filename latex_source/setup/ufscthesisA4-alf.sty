@@ -105,14 +105,14 @@ nopostdot  % Não é colocado ponto ao final da entrada
 % Muda equação para 'Equação (n)'
 \counterwithout{equation}{chapter}
 \def\equationautorefname~#1\null{%
-	Equação~(#1)\null
+	Equation~(#1)\null
 }
 
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
 % Fix large symbols 
-\DeclareSymbolFont{largesymbols}{OMX}{helvet}{m}{n}
+\DeclareSymbolFont{largesymbols}{OMX}{lmr}{m}{n}
 \DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{"F3} 
 
 % Ajuste do tamanho das fontes matemáticas
