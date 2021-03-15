@@ -2,43 +2,123 @@
 \chapter{Introduction}
 % ----------------------------------------------------------
 
-\lipsum[1]
+% Here we write the context (for text mining and legal areas)
+According to the last report \textit{Justiça em Números}, published annually by the National Council of Justice (CNJ), by the end of 2019, there was around 77,1 million ongoing processes waiting for a solution in the Brazilian Judiciary. In total, in 2019, 30,2 million lawsuits were filled in all Judiciary, an increase of 6,8\% in relation to 2018. From those processes, about 5,2 million were filled in the Special Civel Courts (JECs)  \cite{CNJ2020}. 
+
+% Write about JECs
+JECS are Judiciary bodies regulated by Law no. 9,099/1995, which seek to facilitate citizens' access to Justice through simpler and cost-free procedures. As a result, JECs tend to approach the legal problems of ordinary people who find themselves involved in daily conflicts of small economic expression, whether in the purchases they make, in the services they hire or in the accidents they suffer \cite{Watanabe1985}.
+
+% The importance of the JECS and the problem of 
+The judicial lawsuits processed at the JECs are decided manually by the judge, and there is no automation in that sense. This leads to slowness and, as a consequence, the large number of processes pending solution (CITE). In addition, these processes are composed of unstructured textual data that, in addition to being represented in natural language, have their own legal vocabulary (CITE). 
+
+% Write about NLP relevance and uses (falar da RSL que foi feita e que vamos detalhar depois)
+
+In terms of NLP techniques, there are being used to solve several tasks, such as classification (CITE), text summarization (CITE) and  regression (CITE).
+
+\todo{Continue...}
 
 % ----------------------------------------------------------
-\section{Problem and Hypothesis}
+\section{Problem Definition} % Problem and Hypothesis
+% ----------------------------------------------------------
+% 
 
-\lipsum[1]. 
+``Is it possible to predict the result of a legal case based on its content and predict the amount of compensation for immaterial damage using machine learning and text mining techniques?''
 
+The question can be broke down into three:
+
+\begin{itemize}[noitemsep]
+    \item How to translate the complexity of the legal language to a numerical representation?
+    \item Which machine learning techniques for classification can bring an legally acceptable accuracy to the predicted lawsuit result?
+    \item Which machine learning techniques for regression can bring an legally acceptable error to the predicted amount of compensation for immaterial damage?
+\end{itemize}
+
+In this work, we set one hypothesis for each part of our research question as listed below:
+
+\begin{itemize}[noitemsep]
+    \item Representation techniques based on Vector Space Representation (VSM), such as Word Embeddings, trained on legal corpus, and Bag of Words (BOW) using Term Frequency (TF) values, can satisfactorily represent legal texts ;
+    \item Both classical and deep machine learning techniques for classification can achieve legally acceptable results to predict the lawsuit result using the listed representations
+    \item Both classical and deep machine learning techniques for regression can achieve legally acceptable results to predict the compesation value using the listed representations.
+\end{itemize}
+% ----------------------------------------------------------
 \section{Objectives}
+% ----------------------------------------------------------
 
-\lipsum[7]
+In this section we introduce to the reader the main objective and the specific objectives necessary to achieve it.
 
+% ----------------------------------------------------------
 \subsection{Main Objective}
+% ----------------------------------------------------------
 
-\lipsum[2]
+To evaluate if we can predict with a legally acceptable amount of accuracy the result of a legal case and predict the amount of compensation using machine learning and text mining techniques.
 
+% ----------------------------------------------------------
 \subsection{Specific Objectives}
+% ----------------------------------------------------------
 
-\lipsum[8]
+To do that we need to:
 
-\section{Methodology}
+\begin{itemize}[noitemsep]
+    \item Demonstrate that representing the legal cases numerically using word embeddings and BOW can achieve legally acceptable results in the classification and regression tasks.
+    \item Demonstrate that it is possible to predict the lawsuit result using classical and deep machine learning techniques for classification with legally acceptable accuracy.
+    \item Demonstrate that it is possible to predict the amount of compensation  using classical and deep machine learning  techniques for regression with legally acceptable error.
+\end{itemize}
 
-Some comment
+% ----------------------------------------------------------
+\section{Justification and Subject Relevance}
+% ----------------------------------------------------------
+\begin{itemize}[noitemsep]
+    \item RSL Results
+    \item AI Regulations and initiatives
+    \item Growth in interest 
+\end{itemize}
 
-\subsection{Research Methodology}
+% ----------------------------------------------------------
+\section{Methodological Procedures}
+% ----------------------------------------------------------
 
-\lipsum[3]
+\begin{itemize}[noitemsep]
+    \item Systematic Review
+    \item Legal Dataset 
+    \item Experiments using Python
+    \item Evaluation
+    \item Check Legal Acceptable Accuracy and Errors
+    \item Resources
+\end{itemize}
 
-\subsection{Methodological Procedures}
-
-\lipsum[5]
-
-
+% Structure
+% Include here the research delimitation
+% The steps we have followed to answer the question
 
 
+% ----------------------------------------------------------
+
+\section{Contributions}
+% ----------------------------------------------------------
+
+\begin{itemize}[noitemsep]
+    \item Pre-trained word embeddings models for Brazilian legal texts, since there was no available representation available before.
+    \item Impact of adjustments in the pipeline for regression and classification.
+    \item As real life application, we would help the Judiciary by helping to end the lawsuits in JEC at the conciliation hearing step.
+\end{itemize}
+
+% Contribuições mais acadêmicas
+% Contribuições mais práticas
+% - Help to speed up the process by ending them at the conciliation hearing.
+
+% ----------------------------------------------------------
+\section{Document Organization}
+% ----------------------------------------------------------
+
+The work is structured in X chapters, beginning with this introduction.
+
+In \citechapter{cap:ml_text}, we introduce...
+
+In \citechapter{cap:related_works}, ...
 
 
-
+\begin{equation}
+    y = \sum_{x=0}^{n}\cos(x)
+\end{equation}
 
 
 

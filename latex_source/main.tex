@@ -35,17 +35,30 @@
 
 
 \usepackage{setup/ufscthesisA4-alf}
+\usepackage{lipsum}
 
 % Serif fonts
-\usepackage{mathptmx}
-%\usepackage{palatino}
+%\usepackage{mathptmx}
+\usepackage{palatino}
+%\usepackage[lining]{ebgaramond}
+
+% \usepackage{fourier}
+% \usepackage[T1]{fontenc}
+
+%\usepackage{librebaskerville}
+%\usepackage[T1]{fontenc}
+
+% \usepackage{librecaslon}
+% \usepackage[T1]{fontenc}
 
 % Sans Serif fonts
-%\usepackage[defaultsans]{lato}
-%\usepackage{cmbright}
+\usepackage[defaultsans]{lato}
+%\usepackage[defaultsans]{cmbright}
 
+% Text font
 \renewcommand{\familydefault}{\rmdefault}
-
+\newcommand{\citechapter}[1]{Chapter \ref{#1}}
+\newcommand{\todo}[1]{\noindent{\color{blue}\textbf{TODO:} #1}}
 
 \addbibresource{aftertext/references.bib} % Seus arquivos de referências
 
@@ -146,7 +159,8 @@
 % ---
 
 % Declaração das siglas
-\siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
+\siglalista{BOW}{Bag of Words}
+\siglalista{VSM}{Vector Space Model}
 
 % Declaração dos simbolos
 \simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
@@ -199,29 +213,13 @@
 % ----------------------------------------------------------
 \textual
 
-% ---
-% 1 - Introdução
-% ---
-\include{chapters/1-chapter}
-% ---
 
-% ---
-% 2 - Capítulo 2
-% ---
-\include{chapters/2-chapter}
-% ---
-
-% ---
-% 3 - Capítulo 3
-% ---
-\include{chapters/3-chapter}
-% ---
-
-% ---
-% 4 - Conclusão
-% ---
-%\phantompart
-\include{chapters/4-chapter}
+\include{chapters/1-introduction}
+\include{chapters/2-background}
+\include{chapters/3-related_work}
+\include{chapters/4-experiments}
+\include{chapters/5-results_discussion}
+\include{chapters/6-conclusion}
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
