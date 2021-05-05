@@ -2,25 +2,50 @@
 \chapter{Introduction}
 % ----------------------------------------------------------
 
-% Here we write the context (for text mining and legal areas)
+
+
+
+% \section{Motivation and context}
+
+% Context
 According to the last report \textit{Justiça em Números}, published annually by the National Council of Justice (CNJ), by the end of 2019, there was around 77,1 million ongoing processes waiting for a solution in the Brazilian Judiciary. In total, in 2019, 30,2 million lawsuits were filled in all Judiciary, an increase of 6,8\% in relation to 2018. From those processes, about 5,2 million were filled in the Special Civel Courts (JECs)  \cite{CNJ2020}. 
 
 % Write about JECs
 JECS are Judiciary bodies regulated by Law no. 9,099/1995, which seek to facilitate citizens' access to Justice through simpler and cost-free procedures. As a result, JECs tend to approach the legal problems of ordinary people who find themselves involved in daily conflicts of small economic expression, whether in the purchases they make, in the services they hire or in the accidents they suffer \cite{Watanabe1985}.
 
-% The importance of the JECS and the problem of 
-The judicial lawsuits processed at the JECs are decided manually by the judge, and there is no automation in that sense. This leads to slowness and, as a consequence, the large number of processes pending solution (CITE). In addition, these processes are composed of unstructured textual data that, in addition to being represented in natural language, have their own legal vocabulary (CITE). 
+% The increasing interest in applying legal judgements (cite RSL?)
+Considering the challenges faced in the judiciary system in Brazil and around the world (CITE), there is an increasing interest (CITE) of the literature on applying Artificial Intelligence (AI) based techniques to solve issues from the lower courts (CITE), such as JECs, to the superior courts (CITE).
 
-% Write about NLP relevance and uses (falar da RSL que foi feita e que vamos detalhar depois)
+% What is AI?
+AI, according to \textcite{Russell2020}, relates to the study of intelligent agents that receives percepts or inputs from the environment and make actions. The agent uses a function to map the percepts to the appropriate actions and such function can be explicitly defined and/or learned using Machine Learning (ML) techniques (CITE).
 
-In terms of NLP techniques, there are being used to solve several tasks, such as classification (CITE), text summarization (CITE) and  regression (CITE).
+% ML tasks in the legal environment
+
+\todo{Improve} In the legal context, the agent receives as percept (inputs) a the case's  textual data and acts (output) setting a decision. Considering the complexity of legal judgments, such decision may be learned using ML and Text Mining (TM) techniques, \todo{Define TM}.
+
+% What is Classification, clustering and regression in this work?
+Regarding the tasks to apply in legal decisions include clustering, which is ..., classification..., regression, ... (?)
+
+% The many applications of TM and NLP
+TM techniques have been used to solve several tasks regarding textual data, such as classification (CITE DEF), regression (CITE DEF) and clustering (CITE DEF) in several contexts, such as the legal (), medical (), engineering and social media
+
+% NLP
 
 \todo{Continue...}
+
 
 % ----------------------------------------------------------
 \section{Problem Definition} % Problem and Hypothesis
 % ----------------------------------------------------------
+
+% The importance of the JECS and the problem of 
+The judicial lawsuits processed at the JECs are decided manually by the judge, and there is no automation in that sense. This leads to slowness and, as a consequence, the large number of processes pending solution (CITE). In addition, these processes are composed of unstructured textual data that, in addition to being represented in natural language, have their own legal vocabulary (CITE). 
+
+% falar da RSL que foi feita e que vamos detalhar depois)
+
 % 
+
+\section{Research Question}
 
 ``Is it possible to predict the result of a legal case based on its content and predict the amount of compensation for immaterial damage using machine learning and text mining techniques?''
 
@@ -32,13 +57,6 @@ The question can be broke down into three:
     \item Which machine learning techniques for regression can bring an legally acceptable error to the predicted amount of compensation for immaterial damage?
 \end{itemize}
 
-In this work, we set one hypothesis for each part of our research question as listed below:
-
-\begin{itemize}[noitemsep]
-    \item Representation techniques based on Vector Space Representation (VSM), such as Word Embeddings, trained on legal corpus, and Bag of Words (BOW) using Term Frequency (TF) values, can satisfactorily represent legal texts ;
-    \item Both classical and deep machine learning techniques for classification can achieve legally acceptable results to predict the lawsuit result using the listed representations
-    \item Both classical and deep machine learning techniques for regression can achieve legally acceptable results to predict the compesation value using the listed representations.
-\end{itemize}
 % ----------------------------------------------------------
 \section{Objectives}
 % ----------------------------------------------------------
@@ -95,6 +113,8 @@ To do that we need to:
 \section{Contributions}
 % ----------------------------------------------------------
 
+During the research, experiments were conducted to answer the research questions. Some of these experiments resulted in publications in journals and conferences. Considering the published works and the experiments applied, the contributions of these work are as follows:
+
 \begin{itemize}[noitemsep]
     \item Pre-trained word embeddings models for Brazilian legal texts, since there was no available representation available before.
     \item Impact of adjustments in the pipeline for regression and classification.
@@ -114,12 +134,6 @@ The work is structured in X chapters, beginning with this introduction.
 In \citechapter{cap:ml_text}, we introduce...
 
 In \citechapter{cap:related_works}, ...
-
-
-\begin{equation}
-    y = \sum_{x=0}^{n}\cos(x)
-\end{equation}
-
 
 
 
