@@ -41,7 +41,7 @@
 %\usepackage{mathptmx}
 \usepackage{palatino}
 %\usepackage[lining]{ebgaramond}
-
+\usepackage{float}
 % \usepackage{fourier}
 % \usepackage[T1]{fontenc}
 
@@ -53,10 +53,15 @@
 
 % Sans Serif fonts
 \usepackage[defaultsans]{lato}
+\usepackage{arydshln}
+
+\setlength\dashlinedash{1pt}
+\setlength\dashlinegap{2pt}
 %\usepackage[defaultsans]{cmbright}
 
 % Text font
 \renewcommand{\familydefault}{\rmdefault}
+\renewcommand{\ttdefault}{lmtt} 
 \newcommand{\citechapter}[1]{Chapter \ref{#1}}
 \newcommand{\todo}[1]{\noindent{\color{blue}\textbf{TODO:} #1}}
 
@@ -163,6 +168,7 @@
 \siglalista{ML}{Machine Learning}
 \siglalista{BOW}{Bag of Words}
 \siglalista{VSM}{Vector Space Model}
+\siglalista{CNJ}{National Council of Justice}
 
 % Declaração dos simbolos
 \simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
@@ -187,6 +193,7 @@
 \begin{document}
 
 % Seleciona o idioma do documento (conforme pacotes do babel)
+\renewcommand{\arraystretch}{1.3}
 \selectlanguage{english}
 %\selectlanguage{brazil}
 
@@ -217,11 +224,11 @@
 
 
 \include{chapters/1-introduction}
-%\include{chapters/2-background}
-%\include{chapters/3-related_work}
-%\include{chapters/4-experiments}
+\include{chapters/2-background}
+\include{chapters/3-related_work}
+\include{chapters/4-experiments}
 %\include{chapters/5-results_discussion}
-%\include{chapters/6-conclusion}
+\include{chapters/6-conclusion}
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -254,6 +261,8 @@
 \begin{apendicesenv}
 %	\partapendices* 
 	\input{aftertext/apendice_a}
+	\input{aftertext/apendice_b}
+	\input{aftertext/apendice_c}
 \end{apendicesenv}
 % ---
 

@@ -1,8 +1,25 @@
 % ----------------------------------------------------------
-\chapter{Final Remarks}
+\chapter{Final Remarks} \label{cap:final_remarks}
 % ----------------------------------------------------------
 
-\section{Technical Production (Artigos)}
+% ----------------------------------------------------------
+\section{Conclusions}
+% ----------------------------------------------------------
+
+% Aqui pode dividir em duas partes
+
+% 1: Ligação entre os objetivos e resultados. Se foram atingidos e o que se pode concluir disso
+% 2: Algo mais subjetivo:
+%    - Dificuldades: coleta de dados. Se fosse algo unificado, seria muito mais fácil. A pesquisa teria evoluido muito mais rápido.  Também falar sobre dificuldades do ponto de vista de técnicas. Compartilhamento difícil.
+%    - 
+%     
+% ----------------------------------------------------------
+
+\section{Contributions}
+% ----------------------------------------------------------
+
+During the research, experiments were conducted to answer the research questions. Some of these experiments resulted in publications in journals and conferences, as follows:
+
 
 \begin{flushleft}
 
@@ -18,16 +35,47 @@ SABO, Isabela Cristina; DAL PONT, Thiago Raulino; WILTON, Pablo Ernesto Vigneaux
 
 \vspace{1em}
 
-
-(Submitted) 
+DAL PONT, Thiago Raulino; SABO, Isabela Cristina; H, Jomi Fred. Regression in Brazilian Legal Judgments to Predict Compensation for Immaterial Damage. \textbf{Natural Language Engineering}, 2021. (Prelo) 
+ 
 \end{flushleft}
+
+% Contribuições mais acadêmicas
+Considering the published works and the experiments applied, the contributions to the state of the art in ML applied to legal texts are as follows:
+
+\begin{itemize}[noitemsep]
+    \item Pre-trained word embeddings models for Brazilian legal texts, since there was no available representation available before.
+    \item New application of regression in legal textual data.
+    \item Impact of adjustments in the pipeline for regression and classification.
+    
+\end{itemize}
+
+
+% Contribuições mais práticas
+In terms of practical contributions, the models and pipelines from this work will be applied in real legal conciliation hearings in the JEC at UFSC. A legal expert will present and explain the predictions to the parties. Thus, we expect to help them on reaching an agreement without the need of waiting for a judgment. In this way, the litigation in the JEC would decrease, contributing to faster and more efficient access for citizens to justice.
+
 
 
 \section{Limitations}
 
 \section{Future Work}
 
+% Aprimorar a classificação
+% Aprimorar a representação
+% Aprimorar a regressão
+% A ideia de um sistema composto de duas partes
 
-\section{Extra Information (Git)}
 
-\section{Acknowledgement (para CAPES e Petrobras)}
+\section{Extra Information}
+
+In the following,  the repositories with the codes used in this research are listed:
+
+\begin{itemize}    [noitemsep]
+    \item Text Representation (\url{https://github.com/thiagordp/embeddings_in_law_paper})
+    \item Text Classification (\url{})
+    \item Text Regression  (\url{https://github.com/thiagordp/text_regression_in_law_judgments})
+    \item Clustering (\url{https://github.com/thiagordp/clustering_jec})
+\end{itemize}
+
+\section{Acknowledgements}
+
+This research was subsidiada by the CAPES in the first 25 months in the CAPES-PROEX. The other 5 by Petrobras.

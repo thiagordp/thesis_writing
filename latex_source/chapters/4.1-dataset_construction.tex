@@ -1,0 +1,81 @@
+
+% Describe the order of the experiments
+%----------------------------------------------------------
+\section{Dataset Construction} \label{sec:dataset_construction}
+
+\subsection{Labeled Dataset from Special Civel Court}
+% JEC Dataset
+
+
+% Retirado da parte de classificação. Adaptar aqui
+%A base de dados de treinamento contou com um total de 665 documentos de sentenças, abrangendo as quatro classes. Entretanto, algumas destas sentenças apresentaram mais de um resultado, ou seja, contêm mais de uma classe. Nesses casos, as sentenças foram replicadas para cada uma das classes indicadas em seu dispositivo, resultando em um total de 673 sentenças para o treinamento. Assim, para a classe “procedente”, foram incluídas 214 sentenças; para classe “improcedente”, 70 sentenças; para classe “parcialmente procedente”, 379 sentenças; e para a classe “extinção”, 10 sentenças.
+
+% Cases' result = label in this work
+
+\subsection{Unlabeled Dataset from Brazilian Higher Courts}
+% STF, STJ, TJ-SC Dataset
+
+% Warning!! Copy/Paste 
+Concerning embeddings training, the first step is to obtain the collection of legal documents from the court web portals, followed by raw text extraction from these documents. To enable us to evaluate the specificity influence of these legal corpora, we divided it into two contexts: related to general legal texts and related to air transport services text.
+
+% Warning!! Copy/Paste
+We also collected texts from other general topics (not related to legal domains) that are already compiled and freely available. Having the corpora for legal and miscellaneous contexts, we applied some processing steps to remove noise from texts. To evaluate the influence of corpus size in embeddings training, we divided these three corpora into smaller pieces based on word count.
+
+% Warning!! Copy/Paste 
+To train the embeddings it is required large text corpora to be able to get good embeddings. However, in the Brazilian Portuguese language, we could not find any dataset available on the Internet containing enough legal text corpora for our purposes. Thus, we had to build our legal corpora.
+
+% Warning!! Copy/Paste 
+Our main sources of legal text are Brazilian courts platforms. We collected judgments from the webpages of Federal Supreme Court (STF), Superior Court of Justice (STJ) and State Court of Santa Catarina (TJ-SC) \cite{STF2020, STJ2020, TJSC2020}. 
+We also collected judgments from the JusBrasil portal containing processes related only to failures on air transport service from all State Courts (TJ) from Brazil \cite{Jusbrasil2020}.
+
+% Warning!! Copy/Paste 
+Table \ref{tab:count_process} shows the number of processes acquired and word count for each Tribunal:
+
+\begin{table}[htb]
+\caption{Acquired process from Courts for Embeddings Training}
+\label{tab:count_process}
+\centering
+\begin{tabular}{@{}crrrr@{}}
+\toprule
+\textbf{Source}      & \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Collegial \\ Judgments\end{tabular}}}   & \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Individual \\ Judgments\end{tabular}}} & \multicolumn{1}{c}{\textbf{Subtotal}} &\multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Word \\ Count\end{tabular}}} \\ \midrule
+STF                  & 64,779              & 118,910              & 183,689     & 294,937,185  \\\hdashline
+STJ                  & 101,141              & 0                    & 101,141      & 312,687,450 \\\hdashline
+TJ-SC                & 989,964              & 662,535              & 1,652,499   & 3,060,212,814  \\\hdashline
+TJs (JusBrasil)           & 34,239               & 0                    & 34,239        & 78,138,337\\ \midrule
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \textbf{TOTAL}       & 1,971,568     &  3,745,975,786\\ \bottomrule
+\end{tabular}
+
+Source: Adapted from \textcite{DalPont2020}
+\end{table}
+
+% Warning!! Copy/Paste 
+After downloading all processes, most of them in PDF and Rich Text Format (RTF) formats, we extracted raw texts from these files. We did not apply Optical Character Recognition (OCR) in scanned PDF documents, due to time limits to finish the experiments, so only digital PDFs were accounted with RTF files in Table \ref{tab:count_process}. 
+
+% Warning!! Copy/Paste 
+With the extracted texts, we applied some pre-processing steps, as discussed further in this section. 
+
+% Warning!! Copy/Paste 
+Then we built the legal text corpora containing all the processes related to all law subjects, which we call \emph{general} legal text corpora in this work. Using this base, we created another text corpora whose processes are related only to air transport and consumer law, and we call it \emph{air transport} legal text corpora.
+
+% Warning!! Copy/Paste 
+To be able to compare how good embeddings trained with legal texts perform against those created with all kinds of texts, we also created other corpora from a variety of sources. Thus, we searched for free available textual datasets. In this work, we call these texts as \emph{global} context texts. Table \ref{tab:global_corpora} shows all the global text datasets used. Then we apply some preprocessing steps, as will be described further in this section.
+
+\begin{table}[htb]
+\caption{Global context corpora}
+\label{tab:global_corpora}
+\centering
+\begin{tabular}{@{}crrc@{}}
+\toprule
+\textbf{Dataset}                   & \textbf{Documents} & \textbf{Word Count} & \textbf{Source} \\ \midrule
+Wikipedia in Portuguese            & 1,014,713          & 303,622,360         & \textcite{Wikipedia2019}                \\\hdashline
+Brazilian Literature Books         & 169                & 37,848,783          & \textcite{Tatman2017}                 \\\hdashline
+Old Newspapers                     & 617,627            & 26,441,581          &         \textcite{Tan2020}     \\\hdashline
+Folha de São Paulo News            & 165,641            & 74,594,367          &                     \textcite{Marlessonn2019}             \\\hdashline
+HC News Corpus                     & 494,128            & 27,170,063          &        \textcite{Christensen2016}         \\\hdashline
+Blogspot Posts                     & 2,181,073          & 696,657,915         &          \textcite{Santos2018}       \\\hdashline
+Wikihow Instructions               & 786,283            & 22,471,312          &        \textcite{Chocron2018}         \\ \midrule
+\multicolumn{1}{r}{\textbf{TOTAL}} & 5,259,634          & 1,188,806,381       & \textbf{}       \\ \bottomrule
+\end{tabular}
+
+Source: Adapted from \textcite{DalPont2020}
+\end{table}
