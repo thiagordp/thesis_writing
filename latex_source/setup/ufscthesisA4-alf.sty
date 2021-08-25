@@ -47,6 +47,7 @@ seeautonumberlist,
 nonumberlist,
 nogroupskip,
 nomain,
+automake,
 shortcuts,   % criação de atalhos
 acronym,  % criação de acrônimos  	
 translate=babel, % Faz o papel de \providetranslation
@@ -58,7 +59,6 @@ nopostdot  % Não é colocado ponto ao final da entrada
 \RequirePackage[italic,defaultmathsizes,eulergreek]{mathastext}
 \RequirePackage{amsmath}
 \RequirePackage{bm}
-% ---\usepackage[automake]{glossaries}
 
 
 % ---
@@ -128,7 +128,7 @@ nopostdot  % Não é colocado ponto ao final da entrada
 \newglossarystyle{mylong1}{% modificado de https://tex.stackexchange.com/a/166209/151962
 	\setglossarystyle{long}%
 	\renewenvironment{theglossary}%
-	{\begin{longtable*}[l]{@{}p{\dimexpr 3.0cm-\tabcolsep}p{0.78\hsize}}}% <-- change the value here
+	{\renewcommand\arraystretch{1}\begin{longtable*}[l]{@{}p{\dimexpr 3.0cm-\tabcolsep}p{0.78\hsize}}}% <-- change the value here
 		{\end{longtable*}}%
 }
 
@@ -139,6 +139,10 @@ nopostdot  % Não é colocado ponto ao final da entrada
 	{\begin{longtable*}[l]{@{}p{\dimexpr 2.0cm-\tabcolsep}p{0.86\hsize}}}% <-- change the value here
 		{\end{longtable*}}%
 }
+
+% Redefine \listadesiglasname para ser apenas siglas
+\renewcommand{\listadesiglasname}{List of Abbreviations and Acronyms} 
+
 
 % Só dá entrada na lista. Ainda não funciona com o limarka
 \newcommand{\siglalista}[2]{\newacronym{#1}{#1}{#2}} 
@@ -157,7 +161,7 @@ nopostdot  % Não é colocado ponto ao final da entrada
 	\printnoidxglossary[
 	style=mylong1,
 	type=acronym,
-	sort=letter,
+	%sort=letter,
 	title={\listadesiglasname}
 	]
 	\cleardoublepage
@@ -235,7 +239,7 @@ nopostdot  % Não é colocado ponto ao final da entrada
 \providecommand{\imprimircentro}{}
 \newcommand{\centro}[1]{\renewcommand{\imprimircentro}{#1}}
 
-\newcommand{\coordenadorname}{Head}
+\newcommand{\coordenadorname}{Coordenador}
 \providecommand{\imprimircoordenadorRotulo}{}
 \providecommand{\imprimircoordenador}{}
 \newcommand{\coordenador}[2][\coordenadorname]%
@@ -252,10 +256,10 @@ nopostdot  % Não é colocado ponto ao final da entrada
 	\renewcommand{\coorientadorname}{Co-Advisor}
 	%% ajusta nomes usados com a macro \autoref
 	\renewcommand{\pageautorefname}{page}
-	\renewcommand{\sectionautorefname}{Seção}
-	\renewcommand{\subsectionautorefname}{Seção}
-	\renewcommand{\paragraphautorefname}{Seção}
-	\renewcommand{\subsubsectionautorefname}{Seção}
+	\renewcommand{\sectionautorefname}{Section}
+	\renewcommand{\subsectionautorefname}{Section}
+	\renewcommand{\paragraphautorefname}{Section}
+	\renewcommand{\subsubsectionautorefname}{Section}
 }
 
 % ---
@@ -272,7 +276,7 @@ nopostdot  % Não é colocado ponto ao final da entrada
 % Ver https://github.com/abntex/abntex2/issues/176
 % ---
 \newcommand{\quadroname}{Frame}
-\newcommand{\listofquadrosname}{List of frames}
+\newcommand{\listofquadrosname}{List of Frames}
 \newfloat[chapter]{quadro}{loq}{\quadroname}
 \newlistof{listofquadros}{loq}{\listofquadrosname}
 \newlistentry{quadro}{loq}{0}

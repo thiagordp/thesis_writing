@@ -1,30 +1,103 @@
 % ----------------------------------------------------------
 \chapter{Related Work}\label{cap:related_works}
-% ---------------------------------------------------------- Citar que uma parte dos trabalhos relacionados foram selecionados a partir de RSLs e mais alguns foram selecionado como compleme.
 
-% Citar que muitos dos trabalhos vieram das RSLs
-% 
+This chapter presents the related work relevant to this research. Part of them came from the three SRL, but we included others to complement the chapter's purpose. Each section in this chapter focus on describing the relevant work regarding each part of the research question.
 
-This chapter presents the related work relevant to this research. Part of the them came from the SRLs and others added as complement by the researcher.
+\section{Text Representation} \label{sec:related_representation}
 
-\section{Related works in Text Representation}
+% After the second systematic review, we select four papers related to ours: two about word embeddings applied in multi themes in Portuguese (Brazilian and European); two about word embeddings applied in legal themes in several languages. We did not find work regarding word embeddings applied to  legal texts in Portuguese.
+
+\textcite{Hartmann2017} evaluated different word embeddings models trained on a sizable Portuguese corpus (1,395,926,282 tokens in total). They trained thirty-one word embeddings models using FastText, GloVe, Wang2Vec, and Word2Vec, and evaluated them intrinsically on syntactic and semantic analogies and extrinsically on \gls{POS} tagging and sentence semantic similarity tasks. The results obtained from intrinsic and extrinsic evaluations were not aligned, as opposed to what they expected. GloVe produced the best results for syntactic and semantic analogies, and the worst, together with FastText, for both \gls{POS} tagging and sentence similarity. 
+
+\textcite{Rodrigues2020} evaluated different word representation models on semantic similarity tasks, trained on a Portuguese corpus provided by a workshop (10,000 sentences). They used word embeddings (Word2Vec and FastText) and deep neural language models (\gls{ELMo} and \gls{BERT}). The results indicated that the \gls{ELMo} language model was able to achieve better accuracy than any other pre-trained model which has been made publicly available for the Portuguese language. They also demonstrate that FastText Skipgram embeddings can have a significantly better performance on semantic similarity tasks.
+
+\textcite{Chalkidis2019} trained a word embeddings model on a large legal corpus from various public legal sources in English (UK legislation, European legislation, Canadian legislation, Australian legislation, English-translated legislation from EU countries, English-translated legislation from Japanese, US Supreme Court decisions, and US Code). The corpus sums up to a total of approximately 492,000,000 tokens. They trained word embeddings based on the Word2Vec Skipgram model, rather than the most recent FastText. They justified that Word2Vec provided better semantic representation than FastText, which tends to be highly biased towards syntactic information.
+
+Finally, \textcite{SmywiskiPohl2019} trained word embeddings models (Word2Vec and GloVe) to find out which is best suited for establishing the correspondence between Polish legal and extra-legal terminology. The corpora are composed of text data collected from two databases: a) National Corpus of Polish, which includes texts of different genres, such as novels, transcripts of parliamentary speeches, and newspaper articles, which sums up to a total of 2,591,817,208 tokens; b) judgments from Polish Supreme Court, Polish Constitutional Tribunal, Polish common courts, Polish National Chamber of Appeal and Polish administrative courts, which sums up to a total of 4,076,628,858 tokens. The results showed the superiority of the Word2Vec \gls{CBOW} negative sampling variant in their problem.
 
 
-\section{Related works in Text Classification}
+
+%In our \gls{SRL}, we did not find publications concerned with the training of word embeddings in Portuguese legal texts.
+
+\section{Text Classification} \label{sec:related_classification}
+
+%After the first \gls{SRL}, we select a sequence of five researches related to the second part of the research question involving \gls{DL} and Classical \gls{ML}. 
+
+In the international context, \textcite{ElJelali2015a}  conducted the experiment at the Italian Ministry of Justice - the \gls{eJRM}, stands out. It provides support to lay citizens, students, and mediators to obtain legal solutions on a given case, stands out.
+The system was powered by court decisions retrieved at the moment the natural language case is presented. Its architecture consists of four steps: 
+\begin{enumerate}[noitemsep]
+    \item Indexing: intended to store court decisions in a database;
+    \item Core mining: trains a classification model to predict the legal field to which a given case description belongs;
+    \item Query processing: extracts the relevant terms from the query that will be used by core mining to predict the legal field of the disputed text;
+    \item Ranking: retrieves and classifies relevant court decisions (belonging to the foreseen legal field) to be presented to the disputers and mediators. 
+\end{enumerate}
+The following classification algorithms were used: Naïve Bayes, Decision Tree, Linear \gls{SVM} and with Gaussian Kernel, all with and without \gls{PCA} to reduce the dimensionality of the text. The maximum accuracy obtained was 91.3\%, using the Linear \gls{SVM} with \gls{PCA}. 
 
 
-\section{Related works in Text Regression}
+\textcite{Aletras2016} conducted an experiment at the European Court of Human Rights, aiming at predicting decisions. The requests processed in it deal with violations, by a Member State, of the civil and political rights established in the European Convention on Human Rights. Based on the textual evidence extracted from the case, the objective was to predict whether a specific article of the Convention was violated. Such textual evidence  comprises specific parts referring to \textit{fact}, \textit{applicable law} and the \textit{arguments} presented by the parties involved. It is a binary classification having as input the textual data extracted from the cases and, as output, their actual judgment on the violation or not of a certain article of the Convention. A database was formed from decisions related to three articles of the Convention. The results indicated that the \textit{facts} section of a case is the most important predictive factor, that is, judicial decision-making is significantly affected by the stimulus of the narrated facts. The Linear \gls{SVM} classification algorithm was used, obtaining the maximum accuracy of 79\%. 
+
+%\textcite{Sulea2017} carried out the experiment at the Supreme Court of France with Linear SVM classifier reported results of 0.96 F1-Score in predicting a case ruling, 0.9 F1-Score in predicting the law area of a case, and 0.759 F1-Score in estimating the decade to which the case belongs. They used cases and decisions from the 1880s to 2010 as input \textcite{Sulea2017}.
+
+\textcite{Sulea2017} carried out the experiment at the French Supreme Court to predicting cases ruling and the law area. They also investigate the influence of time period of case's ruling over the textual form. As dataset, a collection of rulings from the French Supreme Court judged between the 1880s and 2000s, containing more the 126 hundred thousand documents and their metadata. To represent the text, they used \gls{BOW} with N-Grams of length two and three, followed by the selection of the $k$ most relevant features according to the labels of each problem. As classifier, \gls{SVM} with linear kernel is applied to the three problems. In terms of results, the prediction of law area achieved an accuracy of 90.2\% and F1-Score of 0.90 using eight labels. The prediction of case ruling achieved 96.9\% and 0.97 of accuracy and F1-Score, respectively, for the classification using six labels. Finally, the temporal text classification with seven labels and Bi-Grams achieved 74.3\% of accuracy and F1-Score of 0.732.
+
+\textcite{Maat2010} applied \gls{ML} and knowledge-based techniques to classify judgments  Dutch legislation. Initially, they applied a set of preprocessing techniques such as, stemming, conversion to lower case, and stopwords removal. To represent the legal cases numerically, \gls{BOW} is used with both binary, \gls{TF}, and \gls{TF-IDF} values. As classification techniques, there were \gls{SVM} and a Knowledge Based classifier based on patterns from each of the thirteen labels. To split the dataset in train and test sets, the Leave-One-Out approach. In terms of results, the best setup with \gls{SVM} and binary \gls{BOW} achieved an accuracy of 94.69\%, and F1-Score of 0.947. The best  knowledge-based system achieved accuracy of 94.37\%.
+
+Finally, in the national context, the experiment carried out by  \textcite{Silva2018} and \textcite{Silva2018Book} at the \gls{STF} stands out, conducted by the VICTOR project, from the \gls{UnB}, currently in progress, which aims to solve a problem of pattern recognition in texts. of the judicial processes that enter there. Specifically, the problem to be solved is the classification (binding) of processes into topics of \gls{GR}. The  \gls{GR} is a procedural instrument that acts as an \textit{appeal filter}, allowing the \gls{STF} to select the resources that it will analyze according to criteria of legal, political, social or economic relevance. The project consisted of two stages:
+\begin{enumerate}[noitemsep]
+    \item Classification of five types of parts within a process (secondary goal): judgment, extraordinary appeal (RE), extraordinary appeal (ARE), order and sentence;
+    \item  Classification of themes with general repercussion (main goal): after the classification of pieces, the phase of classification of themes begins, counting on the automation of the segmentation of the five types of important pieces for the identification of  \gls{GR} themes.
+\end{enumerate}
+The main goal is to relate an entire process to one or more  \gls{GR} themes. The maximum accuracy of 90.35\% was obtained in the secondary goal, using \gls{CNN} as classification algorithm.
+
+% Não precisa
+%Based in the \gls{SRL}, we noticed that the classification task has been well explored  in the literature, which limits the possibility of contributions. 
+
+% Não precisa
+%Thus, this work focus on training and comparing Deep learning and Classical ML techniques in the prediction of judgments from JEC at UFSC. We explore a range of techniques greater than most of the papers found in the \gls{SRL}.
+
+\section{Text Regression}  \label{sec:related_regression}
+
+% Não precisa
+%In this section, we present some papers which address text regression in different areas. Based on the third \gls{SRL}, to the best of our knowledge, there are no reported researches on the application of regression specifically in legal texts.
+
+\textcite{joshi2010} used text regression to predict a movie's opening weekend revenue. They collected data for movies released in 2005–2009. For these movies, they obtained metadata and a list of hyperlinks to movie reviews by MetaCritic, and each movie's production budget, opening weekend gross revenue, and the number of screens on which it played during its opening weekend from The Numbers. They applied linear regression combined with N-Grams. The results revealed that review text can replace metadata and even improve the prediction quality. 
+
+\textcite{lampos2014} used text regression to predict a user impact score, estimated by combining the numbers of the user's followers, followees and listings. They formed a Twitter dataset of more than forty eight million tweets produced by 38,020 users located in UK in the period between April 14, 2011 and April 12, 2012. They applied linear as well as nonlinear learning method (Gaussian Process). The results generated strong predictions, especially with models based on the Gaussian Process, and showed that activity, oriented interactivity and engagement on a diverse set of topics are among the most decisive impact factor. 
+
+\textcite{Trusov2016} used text regression to predict next year change in stock price volatility in the context of financial risk problem. They collected data from traded companies reports provided by the EDGAR system, maintained by the U.S. Securities and Exchange Commission (SEC), and stock prices via Yahoo Finance. They applied Support Vector Regression and Random Forest models associated to \gls{BOW} representation with \gls{LDA} and \gls{TF-IDF}. The results showed that models with multiple representations outperform single representation models.
+
+\textcite{Zou2016} used text regression to detect and quantify infectious intestinal diseases (IIDs) from social media content. They collected Twitter data and social health surveillance records obtained from Public Health England (PHE), and applied a regularized linear (Elastic Net) as well as a nonlinear (Gaussian Process) regression function for inference. The results indicated that both in terms of prediction quality and semantic interpretation, Twitter data contain a signal that could be strong enough to complement conventional methods for IID surveillance. Regarding text regression, the nonlinear approach performs better.
+
+\textcite{Kusmierczyk2016} used text regression to predict nutritional fact values of an unknown recipe within the context of dietary pattern analysis in food-focused social networks. They collected data from the largest English online food recipe platform, namely \textit{allrecipes.com}. Each recipe has title and information about nutritional facts (per 100 g). They applied \gls{LDA} with linear regression and with Gradient Boosted regression trees. The experiments showed the extent to which it is possible to predict nutrient facts from meal name. 
+
+Finally, \textcite{XU2020} used text regression to analyze online consumer reviews and managerial responses from the hotel industry. They collected online consumer reviews about the well-known Marriot hotel chain from three platforms, namely Expedia, representing third-party booking platforms; TripAdvisor, representing social-media platforms; and Marriot's official booking platform, representing direct platforms (channels). They applied multinomial logistic regression combined with \gls{LSA} and \gls{TF-IDF}. The results suggested that although consumers have different linguistic styles and focus on different attributes in their reviews on the three platforms, the antecedents of their overall satisfaction are the same: room, employees and services, location and access, and operations and facilities. Moreover, managers differentiate between consumers' perceptions in their review process and their perceptions about the consumption experience. Based on these results, they made recommendations for managers to provide suitable responses to the different platforms online and to improve consumer overall satisfaction.
+
+% Não precisa
+%To contribute to the state of the art, this research not only applies regression to a problem from another domain, but also explores a greater variety of \gls{NLP} and \gls{ML} techniques in regression pipelines.
 
 
 \section{Conclusions for the Chapter}
 
-% Aqui fazer uma síntese colocando o trabalho em relação à literatura. O que ele faz que não existe na literatura.
+In the following paragraphs, we discuss how this research differs from the presented related work.
 
-% Classificação é mais explorado pelo fato de ser mais ser mais simples enxergar problemas nessa tarefa. Há então a aplicação e avaliação de ML numa aplicação específica que é o JEC e transporte aéreo.
+% Já foi falado
+%This research focus on the application of \gls{ML} and \gls{DL} techniques to predict the results of the legal cases from \gls{JEC} and the values of compensation for immaterial damage. We divide the problem in three parts regarding distinct \gls{ML} tasks: the text representation, text classification and text regression.
 
-% Já do ponto de vista de regressão, se aplica no direito onde também ninguém resolveu explorar, tem também a questão da avaliação dos passos da pipeline.
+Regarding the representation task, we focus on the representation of legal texts using a neural-based representation called word embeddings. However, the related work found in the \gls{SRL} from Appendix \ref{ap:rsl_representation_law} does not deal with the training and the use of word embeddings on legal texts in Portuguese, either Brazilian as European. The researcher divided the \gls{SRL} in two, one related to the application of word embeddings in Portuguese general texts and the other related to word embeddings on legal texts from any language. Thus, this research explores in depth the training and application of word embeddings in legal texts in Portuguese.
 
-% Já em relação a representação, tem a parte criação de representação para o direito brasileiro que não havia sido explorado com mais aprofundamento.
+Concerning the classification task, we focus on predicting the results of the legal cases from \gls{JEC}. That is, to assign one of four possible labels to the texts. From the \gls{SRL} presented in Appendix \ref{ap:rsl_ml_law}, the classification task has been explored in the literature in legal texts from several languages (including Portuguese), which narrows
+the possible contributions from this research. Thus, it proposes the application and comparison of \gls{DL} and \gls{ML} techniques on the classification of legal cases in Portuguese. Compared to the related work, this research explores a broader range of techniques to the same dataset, from \gls{SVM} to \gls{Bi-LSTM} with Self Attention. 
 
-% Tem também a questão de a classificação ser mais branda em termos de resultado, uma vez que diz um sim ou não. Já a regressão diz um resultado específico com uma margem de erro.
+
+Lastly, about the text regression task, we focus on the prediction of the compensation value for immaterial damage. Based on the \gls{SRL} from Appendix \ref{ap:rsl_regression_law}, we learned that such task has never been employed to legal documents in any language. However, one need to note the scope of this research, where the main input of the text regression pipeline is the legal cases' text, not tabular features. Taking into account the absence of papers on text regression in the legal domain, we listed several works regarding the tasks in many contexts. This research considers a broader variety of \gls{TM} and regression techniques on the prediction of the compensation and it investigates the impact on the performance of having some of these techniques in the text regression task.
+
+%Aqui fazer uma síntese colocando o trabalho em relação à literatura. O que ele faz que não existe na literatura.
+
+%Classificação é mais explorado pelo fato de ser mais ser mais simples enxergar problemas nessa tarefa. Há então a aplicação e avaliação de ML numa aplicação específica que é o JEC e transporte aéreo.
+
+%Já do ponto de vista de regressão, se aplica no direito onde também ninguém resolveu explorar, tem também a questão da avaliação dos passos da pipeline.
+
+%Já em relação a representação, tem a parte criação de representação para o direito brasileiro que não havia sido explorado com mais aprofundamento.
+
+%Tem também a questão de a classificação ser mais branda em termos de resultado, uma vez que diz um sim ou não. Já a regressão diz um resultado específico com uma margem de erro.
 

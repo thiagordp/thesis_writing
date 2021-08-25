@@ -2,23 +2,54 @@
 \chapter{Final Remarks} \label{cap:final_remarks}
 % ----------------------------------------------------------
 
+In this chapter, we conclude this work by recalling the research question, the objective, and the steps for their achievement. We also present the contributions from this research. Beyond contributions, it is highlighted the limitations faced during the executions of this research. Finally, there is the description of possibilities of future work to further explore and improve the experiments and results achieved as well as perspective of relevant research in the areas of study.
+
 % ----------------------------------------------------------
 \section{Conclusions}
 % ----------------------------------------------------------
 
-% Aqui pode dividir em duas partes
 
-% 1: Ligação entre os objetivos e resultados. Se foram atingidos e o que se pode concluir disso
-% 2: Algo mais subjetivo:
-%    - Dificuldades: coleta de dados. Se fosse algo unificado, seria muito mais fácil. A pesquisa teria evoluido muito mais rápido.  Também falar sobre dificuldades do ponto de vista de técnicas. Compartilhamento difícil.
-%    - 
-%     
-% ----------------------------------------------------------
+% Voltar para o objetivo
+This work proposes the application of \gls{TM} and \gls{ML} techniques in legal judgments from the  \gls{JEC} at \gls{UFSC} to predict the possible results and the amount of compensation of immaterial damages. Thus, the research aims at contributing to the increase of agreements in conciliation hearings in the \gls{JEC} at \gls{UFSC}.
+
+It is noteworthy that the conclusions presented in this work  are limited to judgments regarding failures in air transport services judged in the \gls{JEC} of \gls{UFSC}. Thus, the use of the \gls{ML} models trained in this work are limited to that court and that context. However, the word embeddings models are the exception, as they are trained on texts from several courts.
+
+The research question from this work relates to whether it is possible to predict the result of a legal judgment based on its content and predict the amount of compensation for immaterial damage using \gls{ML} and \gls{TM} techniques. To answer the question, it is  divided into three parts, considering three distinct \gls{ML}  tasks: representation, classification, and regression.
+
+
+
+Regarding the question on representation, the research evaluates the (in)existence of an impact of the specificity and the size of the corpora, used to train word embeddings,  in the performance of a text classification task. 
+%We collect a significant amount of unlabeled text from higher courts in Brazil and texts related to miscellaneous contexts. We have thus three distinct contexts: air transport, general, and global, regarding legal judgments on air transport, general legal subjects, and miscellaneous contexts, respectively. Those corpora are divided into smaller subsets, which we use to train distinct GloVe embeddings representations. After applying them to the classification task, we observe that specificity and size matter until a certain point. 
+
+We notice an improvement in having word embeddings trained with texts similar to those used in the classification task. There is also an improvement on performance when increasing the corpus size, however until a certain point.
+We concluded that it is not required to have a corpus with billions of tokens for embeddings training to achieve good results in the classification of judgments from \gls{JEC}. A corpus with 100 million tokens related to air transport produced the best results in our experiments.
+
+Concerning the question about classification, we evaluate and compare the performance of Classical \gls{ML} and \gls{DL} techniques in the classification of judgments from \gls{JEC} at \gls{UFSC}. 
+%We divide the experiments into two: one using the complete judgments' text and another with the same judgments but removing the result part. 
+%We apply several Classical \gls{ML} techniques with \gls{BOW} representation and three \gls{DL} techniques with several word embeddings trained with corpora related to air transport judgments. 
+% As result, we observe in the experiments with full judgments' text that \gls{CNN} with Glove representation achieved the best performance in terms of accuracy. In the second part of the experiments we observed Classical \gls{ML} techniques performed better, that is Random Forest, Neural Networks, and Logistic Regression. 
+We conclude that the application of the judgments prediction in the \gls{JEC} at \gls{UFSC} requires the use of the text from the facts and the applicable law, without results, i.e., without the final judgment. Only the facts and applicable law are available in the early stages of the legal case. Therefore, the use of Classical \gls{ML} techniques yield the best results. However, in the case of applying text classification for to organize the judgments according to their labels, using the complete judgments, \gls{CNN} with Glove embeddings would bring the best performance.
+
+About the question on regression, we aim at evaluating whether the prediction of compensation for immaterial damage can be accurate and helpful in the legal environment using regression techniques. 
+From the testing of several pipelines, we discovered that the adjustments \textit{N-grams Extraction} and \textit{Addiction of \gls{AELE}} have the biggest impact on prediction quality, while \textit{Feature selection}, \textit{Cross-validation} and \textit{Overfitting Avoidance} impact the execution time. 
+%Another conclusion from the experiments relates to the fact the full pipeline does not bring the best prediction quality, i.e., there are other pipelines with better results. 
+Finally, based on the evaluation from the legal expert, the best results for MAE are accurate in terms of compensation for immaterial damage and can be helpful in the conciliation hearings as they may encourage agreements between the parties.
+
+In response to the research question, we conclude that it is possible to predict the judgment's outcome based on the text without the  result part, as the best classifier, Random Forest, achieved an accuracy of 82,2\%. 
+As for the prediction of the amount of compensation for immaterial damage, it is possible to achieve accurate results  when using the set of the proposed adjustments and the regression techniques. The prediction quality achieved with them is acceptable, which facilitates the application in conciliation hearings.
+
+
+We can also highlight some lessons learned during the execution of this research.
+Most of them relate to the subjects of study, that is, Text Mining and Machine Learning, as the researcher and the legal expert had to learn the theory, the techniques, and their implementations from the beginning. Furthermore,  the researcher had the opportunity to adventure in a distinct area, the legal domain. This new knowledge will also be helpful in the daily life. In terms of acquired knowledge to the researchers, this work was very fruitful.  
+
+% Importância do trabalho em grupo.
+Another important lesson from this research is the team work. The experiments, papers, results and discussion presented here  are the product of a joint work between a master's student at PGEAS (the researcher), a doctoral student in law (the legal expert), and their advisors. Contributions also came from the \gls{EGOV} research group. The experience of working with researchers from distinct areas brought many opportunities of sharing methods, ideas, knowledge and others. 
+
 
 \section{Contributions}
 % ----------------------------------------------------------
 
-During the research, experiments were conducted to answer the research questions. Some of these experiments resulted in publications in journals and conferences, as follows:
+During the research, the experiments conducted to answer the research questions resulted in publications in journals and conferences, as follows:
 
 
 \begin{flushleft}
@@ -27,7 +58,7 @@ SABO, Isabela Cristina; DAL PONT, Thiago Raulino; ROVER, Aires José; HÜBNER, J
 
 \vspace{1em}
 
-DAL PONT, Thiago Raulino; SABO, Isabela Cristina; HÜBNER, Jomi Fred; ROVER, Aires José. Impact of Text Specificity and Size on Word Embeddings Performance: An Empirical Evaluation in Brazilian Legal Domain. In: CERRI, Ricardo; PRATI, Ronaldo C. (Eds.). Cham: Springer International Publishing, 2020. v. 12319. (Lecture Notes in Computer Science). P. 521–535. DOI:10.1007/978-3-030-61377-8\_36. 
+DAL PONT, Thiago Raulino; SABO, Isabela Cristina; HÜBNER, Jomi Fred;ROVER, Aires José. Impact of Text Specificity and Size on Word Embeddings Performance: An Empirical Evaluation in Brazilian Legal Domain. In: CERRI, Ricardo; PRATI, Ronaldo C (Eds.) \textbf{Intelligent Systems}. Cham: Springer International Publishing, 2020. p. 521–535. DOI: 10.1007/978-3-030-61377-8\_36.
 
 \vspace{1em}
 
@@ -35,47 +66,68 @@ SABO, Isabela Cristina; DAL PONT, Thiago Raulino; WILTON, Pablo Ernesto Vigneaux
 
 \vspace{1em}
 
-DAL PONT, Thiago Raulino; SABO, Isabela Cristina; H, Jomi Fred. Regression in Brazilian Legal Judgments to Predict Compensation for Immaterial Damage. \textbf{Natural Language Engineering}, 2021. (Prelo) 
+DAL PONT, Thiago Raulino; SABO, Isabela Cristina; HÜBNER, Jomi Fred; ROVER, Aires José. Regression applied to legal judgments to predict compensation for immaterial damage. \textbf{Natural Language Engineering}, 2021. \textbf{(Prelo)}
  
 \end{flushleft}
 
-% Contribuições mais acadêmicas
-Considering the published works and the experiments applied, the contributions to the state of the art in ML applied to legal texts are as follows:
+The implemented code for each the publications
+is freely available in repositories, as follows:
 
 \begin{itemize}[noitemsep]
-    \item Pre-trained word embeddings models for Brazilian legal texts, since there was no available representation available before.
+   
+    \item Experiments regarding Text Classification with Classical \gls{ML} and \gls{DL} (\url{https://github.com/thiagordp/text_classification_in_legal_docs})
+    \item Experiments regarding Word Embeddings in Portuguese (\url{https://github.com/thiagordp/embeddings_in_law_paper})
+     \item Experiments regarding Clustering (\url{https://github.com/thiagordp/clustering_jec})
+    \item Experiments regarding Text Regression  (\url{https://github.com/thiagordp/text_regression_in_law_judgments})
+
+\end{itemize}
+
+
+
+% Contribuições mais acadêmicas
+Considering the published works and the experiments applied, the contributions to the state of the art in \gls{ML} applied to legal texts are as follows:
+
+\begin{itemize}[noitemsep]
+    \item Pre-trained word embeddings models for Brazilian legal texts, as there were no representations available until then.
     \item New application of regression in legal textual data.
-    \item Impact of adjustments in the pipeline for regression and classification.
-    
+    \item Impact of adjustments in the pipeline for regression in judgments from \gls{JEC} at \gls{UFSC}.
+    \item Performance of Classical \gls{ML} and \gls{DL} techniques in the classification of legal judgments from \gls{JEC}.
 \end{itemize}
 
 
 % Contribuições mais práticas
-In terms of practical contributions, the models and pipelines from this work will be applied in real legal conciliation hearings in the JEC at UFSC. A legal expert will present and explain the predictions to the parties. Thus, we expect to help them on reaching an agreement without the need of waiting for a judgment. In this way, the litigation in the JEC would decrease, contributing to faster and more efficient access for citizens to justice.
+In terms of practical contributions, the models and pipelines from this work may be adapted for the application in real legal conciliation hearings in the \gls{JEC} at \gls{UFSC}. A legal expert may present and explain the predictions to the parties. Thus, we expect to help them on reaching an agreement without the need of waiting for a judgment. In this way, the litigation in the \gls{JEC} would decrease, contributing to faster and more efficient access for citizens to justice.
 
 
 
 \section{Limitations}
 
+The first limitation concern the difficulties to gather the dataset for the experiments. All the legal judgments had to be collected manually by the legal expert into the \gls{JEC}. This is due to the fact that we wanted to avoid repeated judgments or judgments about a subject not fully related to failures in air transport service. We have the support of the current \gls{JEC}/\gls{UFSC} judge in this step. Although the Brazilian Judiciary indexes its processes according to the subject, there were changes in procedural electronic systems in this period, and the indexation may be incorrect due to human error. This is due to the fact that the lawsuit can be filed by different operators such as lawyers, consumers themselves, or by Judiciary employees. Efforts to unify data management in the Brazilian Judiciary are  recent, but there is still difficulties to access data for experiments. If the datasets were unified and available under proper request, the amount of work for this research would be considerably reduced.
+
+Another limitation for the dataset relates to possibility of sharing the data in public datasets platforms. The current law does not allow the sharing of personal data contained in the legal judgments. However, it would be interesting to create mechanisms to allow datasets sharing, keeping due care with third-party data, and allowing the experiments to be reproducible for other researchers who read the published articles.  
+
+In terms of predictions, although we achieved good results in classification and regression, the models do not provide the reasons that implied their predictions. When applying the models in a real conciliation hearing, the parties would ask how did the system come to this decision?  Thus, there is the necessity of providing explanation to predictions from ML models.
+
+
+
 \section{Future Work}
 
-% Aprimorar a classificação
-% Aprimorar a representação
-% Aprimorar a regressão
+% Bigger dataset for DL.
+
+Considering the application of ML in the legal judgments from \gls{JEC}, a possible improvement relates to the dataset size increasing. A larger dataset would allow future experiments regarding \gls{DL} tasks that were not explored in this research, such as text summarizing, generation and others.  Two possible paths to do that are the uses of Variational Auto-Encoders  and Generative Adversarial Networks  \cite{Kingma2019, Iqbal2020}.
+
+In terms of text representation, new neural based representation techniques are often proposed in the literature, each of which having more and more trainable parameters. Some examples of representation techniques include: \gls{GPT-3} \cite{Brown2020}, \gls{ELMo} \cite{Peters2018}, \gls{BERT} \cite{Devlin2018} and others.
+Thus, a first improvement in the text representation proposed in this research is the training of models for these newer techniques using the collected corpora. However, training these representations may take longer.
+Furthermore, considering the complexity of the written language used in the legal domain, it may yield relevant contributions the use of sophisticated  representation techniques in applications like automatic judgments' generation or the \textit{translation} of the legal text to a simpler writing, understandable to the common citizen.
+
+Regarding the prediction of legal judgments, both classification and regression, an important  improvement is the use of legal documents from the early stages of a lawsuit, that is, the  complaint from the client, the arguments from the air company, and others. Considering the described limitations of acquiring this type of data, the presented experiments involved only judgments with the summary of the arguments from the parties, and the applicable law. 
+
+
+Despite time constraints to finish this work, in the future, we would like to adapt the pipelines used in the regression experiments to the classification task. The pipelines for the classification task using Classical ML techniques  were similar to the \textit{baseline} for regression. Thus, there is a possibility of improvements by applying the adjustments in the pipelines for classification.
+
+% Entender porque SVM não deu certo de jeito nenhum
 % A ideia de um sistema composto de duas partes
+% Explainability
 
+Another improvement relates to how the users see the predictions from the ML models, that is, the interpretation of the decisions. The current implementation of the pipelines and techniques does not allow the user to understand the steps taken to produce the final prediction. A possible solution to overcome such limitation is the concept of \gls{XAI} \cite{Tjoa2019, Bibal2020}. For example, considering the practical use case in a conciliation hearing. The legal expert would introduce the system and communicate its predictions on the case at hand. However, the parts could ask how the systems got such prediction. Using \gls{XAI} enhancements, the system would highlight the relevant facts, the applicable law, the previous decisions in similar cases, and  finally, its predictions. 
 
-\section{Extra Information}
-
-In the following,  the repositories with the codes used in this research are listed:
-
-\begin{itemize}    [noitemsep]
-    \item Text Representation (\url{https://github.com/thiagordp/embeddings_in_law_paper})
-    \item Text Classification (\url{})
-    \item Text Regression  (\url{https://github.com/thiagordp/text_regression_in_law_judgments})
-    \item Clustering (\url{https://github.com/thiagordp/clustering_jec})
-\end{itemize}
-
-\section{Acknowledgements}
-
-This research was subsidiada by the CAPES in the first 25 months in the CAPES-PROEX. The other 5 by Petrobras.

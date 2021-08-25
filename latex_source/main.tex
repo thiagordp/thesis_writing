@@ -17,8 +17,8 @@
 \documentclass[
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
-	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	oneside,			% para impressão no anverso. Oposto a twoside
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão no anverso. Oposto a twoside
 	a4paper,			% tamanho do papel. 
 	% -- opções da classe abntex2 --
 	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
@@ -42,6 +42,7 @@
 \usepackage{palatino}
 %\usepackage[lining]{ebgaramond}
 \usepackage{float}
+\usepackage{multirow}
 % \usepackage{fourier}
 % \usepackage[T1]{fontenc}
 
@@ -54,11 +55,14 @@
 % Sans Serif fonts
 \usepackage[defaultsans]{lato}
 \usepackage{arydshln}
+\usepackage{inconsolata}
 
 \setlength\dashlinedash{1pt}
 \setlength\dashlinegap{2pt}
 %\usepackage[defaultsans]{cmbright}
 
+
+\newcommand{\blue}[1]{{\color{blue}#1}}
 % Text font
 \renewcommand{\familydefault}{\rmdefault}
 \renewcommand{\ttdefault}{lmtt} 
@@ -110,28 +114,31 @@
 % FIXME Substituir 'Nome completo do autor' pelo seu nome.
 \autor{Thiago Raulino Dal Pont}
 % FIXME Substituir 'Título do trabalho' pelo título da trabalho.
-\titulo{Classification of legal documents and prediction of indenization based on Natural Language Processing and Deep Learning}
+%\titulo{Classification of legal documents and prediction of compensation based on Text Mining and Machine Learning}
+\titulo{Representation, classification and regression techniques applied to legal judgments about immaterial damage due to failures in air  transport services}
+% Representation, classification and regression applied to legal judgments about immaterial damage from air transport service failures
+
 % FIXME Substituir 'Subtítulo (se houver)' pelo subtítulo da trabalho.  
 % Caso não tenha substítulo, comente a linha a seguir.
 %\subtitulo{subtítulo (se houver)}
 \orientador{Prof. Jomi Fred Hübner, PhD.}
 % \orientador[Orientadora]{Nome da orientadora, Dra.}
-\coorientador{Prof. Aires José Rover, PhD}
+\coorientador{Prof. Aires José Rover, PhD.}
 \ano{2021}
 % FIXME Substituir '[dia] de [mês] de [ano]' pela data em que ocorreu sua defesa.
-%\data{[dia] de [mês] de [ano]}
+\data{28 de agosto de 2021}
 % FIXME Substituir 'Local' pela cidade em que ocorreu sua defesa.
 \local{Florianópolis}
 \instituicaosigla{UFSC}
-\instituicao{Federal University of Santa Catarina}
-\tipotrabalho{Dissertation}
-\formacao{Master's Degree in Automation and Systems Engineering}
-\nivel{[master]}
-\programa{Graduate Program in Automation and Systems}
-\centro{Technological and Scientific Center}
+\instituicao{Universidade Federal de Santa Catarina}
+\tipotrabalho{Dissertação}
+\formacao{mestre em Engenharia de Automação e Sistemas}
+\nivel{mestrado}
+\programa{Programa de Pós-Gra\-du\-a\-ção em Engenharia de Automação e Sistemas}
+\centro{Centro Tecnológico e Científico}
 \preambulo
 {%
-\imprimirtipotrabalho~submitted~to~the~\imprimirprograma~at~the~\imprimirinstituicao~to~obtain~the~\imprimirformacao.
+\imprimirtipotrabalho~submetida ao \imprimirprograma~da \imprimirinstituicao para a obtenção do título de \imprimirformacao.
 }
 % ---
 
@@ -140,15 +147,16 @@
 % ---
 % alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
+%\usepackage[a-1b]{pdfx}
 % informações do PDF
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
 		pdftitle={\@title}, 
-		pdfauthor={\@author},
+		pdfauthor={Thiago Raulino Dal Pont},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={ufsc, latex, abntex2}, 
+		pdfkeywords={UFSC, DAS, Machine Learning, Text Classification, Text Representation, Text Regression, Special Civel Court, Legal Judgments}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=black,%blue,          	% color of internal links
     	citecolor=black,%blue,        		% color of links to bibliography
@@ -168,7 +176,74 @@
 \siglalista{ML}{Machine Learning}
 \siglalista{BOW}{Bag of Words}
 \siglalista{VSM}{Vector Space Model}
+\siglalista{JEC}{Special Civel Court}
+\siglalista{TM}{Text Mining}
+\siglalista{TF}{Term Frequency}
+\siglalista{TF-IDF}{Term Frequency-Inverse Document Frequency}
+\siglalista{IDF}{Inverse Document Frequency}
+\siglalista{DL}{Deep Learning}
+\siglalista{JECs}{Special Civel Courts}
+\siglalista{SRL}{Systematic Review of the Literature}
+\siglalista{LDA}{Latent Dirichlet Allocation}
 \siglalista{CNJ}{National Council of Justice}
+\siglalista{GPT-3}{Generative Pre-trained Transformer-3}
+\siglalista{NLP}{Natural Language Processing}
+\siglalista{MI}{Mutual Information}
+\siglalista{RFE}{Recursive Feature Elimination}
+\siglalista{PCA}{Principal Component Analysis}
+\siglalista{PC}{Principal Component}
+\siglalista{RBF}{Radial Basis Function}
+\siglalista{NMF}{Non-negative Matrix Factorization}
+\siglalista{CNN}{Convolutional Neural Network}
+\siglalista{LSTM}{Long-Short Term Memory}
+\siglalista{Bi-LSTM}{Bidirectional Long-Short Term Memory}
+\siglalista{CBOW}{Continuous Bag of Words}
+\siglalista{BERT}{Bidirectional Encoder Representations from Transformers}
+\siglalista{ELMo}{Embeddings from Language Model}
+\siglalista{AB}{AdaBoost}
+\siglalista{XGB}{XGBoosting}
+\siglalista{RF}{Random Forest}
+\siglalista{LR}{Logistic Regression}
+\siglalista{kNN}{k Nearest Neighbors}
+\siglalista{SVM}{Support Vector Machine}
+\siglalista{NN}{feed-forward Neural Networks}
+\siglalista{GB}{Gradient Boosting}
+\siglalista{BG}{Bagging}
+\siglalista{RNN}{Recurrent Neural Network}
+\siglalista{DT}{Decision Tree}
+\siglalista{NB}{Na\"ive Bayes}
+\siglalista{TP}{True Positive}
+\siglalista{TN}{True Negative}
+\siglalista{UFSC}{Federal University of Santa Catarina}
+\siglalista{XAI}{Explainable Artificial Intelligence}
+\siglalista{FN}{False Negative}
+\siglalista{FP}{False Positive}
+\siglalista{t-SNE}{t-distributed Stochastic Neighbor Embedding}
+\siglalista{RMSE}{Root Mean Square Error}
+\siglalista{MAE}{Mean Absolute Error}
+\siglalista{$R^2$}{Coefficient of Determination}
+\siglalista{STF}{Federal Supreme Court}
+\siglalista{STJ}{Superior Court of Justice}
+\siglalista{TJ-SC}{State Court of Santa Catarina}
+\siglalista{EGOV}{E-government, Digital Inclusion and Knowledge Society}
+\siglalista{RG}{Ridge}
+\siglalista{LOO}{Leave-One-Out}
+\siglalista{LSA}{Latent Semantic Analysis}
+\siglalista{SOTA}{State of the Art}
+\siglalista{POS}{Part-of-Speech}
+\siglalista{eJRM}{Justice Relationship Management}
+\siglalista{GR}{General Repercussion}
+\siglalista{UnB}{University of Brasilia}
+\siglalista{NLTK}{Natural Language Toolkit}
+\siglalista{GPU}{Graphics Processing Unit}
+\siglalista{TJ}{State Court}
+\siglalista{RTF}{Rich Text Format}
+\siglalista{OCR}{Optical Character Recognition}
+\siglalista{PDF}{Portable Document Format}
+\siglalista{SG}{Skipgram}
+\siglalista{AELE}{Attributes Extracted by the Legal Expert}
+\siglalista{EV}{Ensemble Voting}
+\siglalista{EN}{Elastic Net}
 
 % Declaração dos simbolos
 \simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
@@ -178,7 +253,7 @@
 
 % compila a lista de abreviaturas e siglas e a lista de símbolos
 \makenoidxglossaries 
-
+%\makeglossaries
 % ---
 
 % ---
@@ -186,6 +261,8 @@
 % ---
 \makeindex
 % ---
+
+
 
 % ----
 % Início do documento
@@ -227,7 +304,6 @@
 \include{chapters/2-background}
 \include{chapters/3-related_work}
 \include{chapters/4-experiments}
-%\include{chapters/5-results_discussion}
 \include{chapters/6-conclusion}
 
 % ----------------------------------------------------------
@@ -240,7 +316,7 @@
 % Referências bibliográficas
 % ----------------------------------------------------------
 \begingroup
-    \printbibliography[title=REFERÊNCIAS]
+    \printbibliography[title=REFERENCES]
 \endgroup
 
 % ----------------------------------------------------------

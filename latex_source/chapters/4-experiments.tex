@@ -1,16 +1,62 @@
 % ----------------------------------------------------------
 \chapter{Experiments, Results and Discussion} \label{cap:proposal}
+
+% Falar que os experimentos foram divididos em três conforme as perguntas. 
+% Os experimentos não foram descritos na ordem que foram executados mas numa ordem conforme as perguntas.
+% As bases de dados foram aumentando conforme os experimentos
+% Descrever brevemente os experimentos
+
+In this chapter, we describe the steps followed to answer the research question and its three parts.\footnote{This chapter is adapted from the papers \textcite{Sabo2019},  \textcite{DalPont2020}, and \textcite{Sabo2021}, with substantial degree of overlap.
+Some sections from those papers are identical to parts of this dissertation, and others are substantially the same as parts, but in different words. To avoid over-quoting, we offer this note as a general citation and do not provide further citations to these articles in the body of the chapter.}
+%
+The questions are answered based on three distinct experiments, regarding text representation, text classification and text regression, detailed in Section \ref{sec:text_representation}, \ref{sec:text_classification}, and \ref{sec:text_regression}, respectively. 
+
+The datasets used in each section consider the same type of data, that is, legal judgments from the \gls{JEC} at \gls{UFSC}. Those judgments involve failures on air transport services. However, the amount of data in each section changes as we run the experiments and performed the data collections at \gls{JEC}, during the last two years.
+
+% 
 % ----------------------------------------------------------
 
 %----------------------------------------------------------
-\input{chapters/4.1-dataset_construction}
+%\input{chapters/4.1-dataset_construction}
+\input{chapters/4.1-representation}
 \input{chapters/4.2-classification}
-\input{chapters/4.3-representation}
-\input{chapters/4.4-regression}
+\input{chapters/4.3-regression}
 
 %----------------------------------------------------------
-\section{Conclusions for the Chapter}
+% \section{Conclusions for the Chapter}
+
+% In this chapter, we focused on the experiments, results, and discussion produced to answer the three parts of the research question.  It is noteworthy that the conclusions drawn in this chapter are based on the dataset of the \gls{JEC} at \gls{UFSC}, containing judgments made by a group of judges on the subject of failures in air transport services. 
 
 
+% %%%%% Representação %%%%%
+
+% %% Resumo
+% In Section \ref{sec:text_representation}, we discussed the impact of specificity and size of the corpus used to train word embeddings on the performance in a classification task. 
+% %% Resposta à pergunta
+% We concluded that specificity and size matter, however with some limitations, that is, increasing the size of the corpus improves the performance until a certain point where adding more text to word embeddings training has minimum impact on the text classification performance.
+
+% % Classificação
+% %% Resumo
+% In Section \ref{sec:text_classification}, we discussed whether Classical ML techniques would perform better than the DL technique on the text classification task of legal judgments from JEC. We divided the analysis into two: one based on the  classification of legal judgments with the result part and another based on the classification without that part. 
+% %% Respondeu a pergunta
+% We noticed that considering our setup, DL learning techniques performed better than Classical ML techniques when classifying legal judgments with the judge's decision. The best technique was the CNN with GloVe representation. The opposite situation happened when classifying legal judgments without result part, that is, the Classical ML techniques performed better. In that case, Random Forest has the best results. Thus, we concluded that the application of the text classification in a conciliation hearing at JEC would require the use of Classical ML techniques like Logistic Regression and Random Forest. However, in the case of document organization according to label, for example, where the full text from the legal judgments is available, CNN with glove may be the best choice.
+
+% % Regressão
+% %% Resumo
+% In Section \ref{sec:text_regression}, we discussed  whether the prediction of compensation values could be accurate and helpful in the legal environment using regression models. We concluded that adding certain NLP and ML techniques, called adjustments, in the pipeline for regression would improve significantly the prediction quality. Based on the execution of several combinations of pipelines, we discovered which adjustments had the biggest impact on prediction quality and execution time, that is, N-Grams Extraction and the Addition of AELE. Based on the legal expert's experience we concluded the results can be helpful in the legal environment since the prediction quality achieve was around 1,000 Brazilian reais, a small value fmom a legal perspective, and it can be used to help on conciliation hearing.
+
+% % Resposta a pergunta principal
+% Finally, we may answer the main research question from this work: Is it possible to predict the result of a legal judgment based on its content and predict the amount of compensation for immaterial damage using machine learning and text mining techniques?
+
+
+
+% Based on the results from the three previous sections, we may say that it is possible to predict the result based on the legal judgment without the result part, the best classifier, Random Forest, achieved an accuracy of 82,2\%, which is a good value, when compared to the related work presented in the Section \ref{sec:related_classification}. 
+% %We observed the representation used had an impact on the results for DL techniques although those models did not perform better than Classical ML techniques. We also analyzed the impact of the size and specificity of the corpora for word embeddings training. 
+
+% Regarding the prediction of the amount of compensation for immaterial damage, it is possible to achieve a legally acceptable prediction quality,  when using the set of the proposed adjustment and the regression techniques, the prediction quality achieved legally acceptable results, which facilitates the application in hearings.
+
+
+% % Conexão com o próximo capítulo
+% In the next chapter, we end this work by highlighting the conclusions, limitations, future work, and extra information. 
 
 % ----------------------------------------------------------

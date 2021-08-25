@@ -28,38 +28,42 @@
 	\centering
 	\imprimirautor\\%
 	\vspace*{10pt}		
-	\textbf{\imprimirtitulo}%
+	\textbf{\textsf{\imprimirtitulo}}%
 	\ifnotempty{\imprimirsubtitulo}{:~\imprimirsubtitulo}\\%
 	%		\vspace*{31.5pt}%3\baselineskip
 	\vspace*{\baselineskip}
 	%\begin{minipage}{\textwidth}
 	% O presente trabalho em nível de \imprimirnivel~foi avaliado e aprovado por banca examinadora composta pelos seguintes membros
-	The present work at \imprimirnivel~level was evaluated and approved by an examining board composed of the following members:\\
+    O presente trabalho em nível de \imprimirnivel~foi avaliado e aprovado por banca examinadora composta pelos seguintes membros:\\
 	%\end{minipage}%
 	\vspace*{\baselineskip}
-	Prof.(a) xxxx, Dr(a).\\
-	Instituição xxxx\\
+	Prof. Fabiano Hartmann Peixoto, Dr.\\
+	Universidade de Brasilia\\
 	\vspace*{\baselineskip}
-	Prof.(a) xxxx, Dr(a).\\
-	Instituição xxxx\\
+	Prof. Eric Aislan Antonelo, Dr.\\
+	Universidade Federal de Santa Catarina\\
 	\vspace*{\baselineskip}
-	Prof.(a) xxxx, Dr(a).\\
-	Instituição xxxx\\
-	\vspace*{2\baselineskip}
+
+	Prof. Marcelo Ricardo Stemmer, Dr.\\
+	Universidade Federal de Santa Catarina\\
+	\vspace*{1\baselineskip}
 	\begin{minipage}{\textwidth}
 		Certificamos que esta é a \textbf{versão original e final} do trabalho de conclusão que foi julgado adequado para obtenção do título de \imprimirformacao.\\
+% 		Certificamos que esta é a \textbf{versão original e final} do trabalho de conclusão que foi julgado adequado para obtenção do título de \imprimirformacao.\\
 	\end{minipage}
-	%    \vspace{-0.7cm}
+	
 	\vspace*{\fill}
-	\assinatura{\OnehalfSpacing Coordenação do Programa de Pós-Graduação}
+	
+	\assinatura{\OnehalfSpacing Prof. Werner Kraus Junior, Dr.\\Coordenador do curso de Pós-Graduação em Engenharia de Automação e Sistemas}
+	
 	\vspace*{\fill}
-	\assinatura{\OnehalfSpacing\imprimirorientador \\ \imprimirorientadorRotulo}
-	%	\ifnotempty{\imprimircoorientador}{
-	%	\assinatura{\imprimircoorientador \\ \imprimircoorientadorRotulo \\
-	%		\imprimirinstituicao~--~\imprimirinstituicaosigla}
-	%	}
-	% \newpage
+	
+	\assinatura{\OnehalfSpacing\imprimirorientador \\ Orientador}
+	
+
+
 	\vspace*{\fill}
+	
 	\imprimirlocal, \imprimirano.
 \end{folhadeaprovacao}
 % ---
@@ -70,9 +74,8 @@
 \begin{dedicatoria}
 	\vspace*{\fill}
 	\noindent
-	\begin{adjustwidth*}{}{5.5cm} 
-		\raggedleft       
-		Este trabalho é dedicado aos meus colegas de classe e aos meus queridos pais.
+	\begin{adjustwidth*}{}{0cm} 
+		\raggedleft To God, my family and friends. 
 	\end{adjustwidth*}
 \end{dedicatoria}
 % ---
@@ -81,9 +84,28 @@
 % Agradecimentos
 % ---
 \begin{agradecimentos}
-	Inserir os agradecimentos aos colaboradores à execução do trabalho. 
-	
-	Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. 
+I thank God for everything, but mainly for allowing me to work on this research amidst so many tribulations and for having completed this step.
+
+I also thank my family, especially my parents and my brother, Gilmar, Rosane, and Gabriel, for all their love, support, and patience during the Master's period.
+
+I thank my advisor, Professor Jomi Fred Hübner, PhD., for all his commitment, dedication, and willingness to guide me during the Master's period and, mainly, for showing me the way to grow as a researcher.
+
+I would like to thank my co-supervisor, Professor Aires José Rover, PhD., also for his commitment, dedication, and willingness during the Master's period, for showing the research from another angle, and also for allowing the use of the EGOV's high-performance computer, without which this work would not be possible. 
+
+I need to thank Isabela, Msc., a doctoral student in law, my right-hand man during this research, whether in times of bad results from experiments, in the data collection, in the paper writing, or in times of joy when receiving their acceptance. 
+
+I must thank my colleagues in the EGOV group, for the moments of relaxation and the shared experiences, knowledge, and techniques for scientific research. 
+
+I thank the professors, colleagues, and servants of the Automation and Systems Department at UFSC, for all the shared knowledge and assistance provided. 
+
+I thank the Judge Vânia Petermann, from the Special Civel Court at the Federal University of Santa Catarina for allowing the research to be conducted by providing access to the court's data.
+
+I thank everyone who in some way provided assistance during the research period but were not explicitly named. 
+
+Finally, I would like to thank CAPES and Petrobras for allowing this work to be carried out through the granting of a master's scholarship. 
+
+
+ 
 \end{agradecimentos}
 % ---
 
@@ -93,59 +115,38 @@
 \begin{epigrafe}
 	\vspace*{\fill}
 	\begin{flushright}
-		\textit{``O ótimo é\\
-			inimigo\\
-			do\\
-			bom.''\\
-			(SOBRENOME do autor da epígrafe, ano)}
+		\textit{``Fortitude is the disposition of soul\\
+		which enables us to despise all inconveniences \\
+		and the loss of things not in our power''\\
+		(St. Augustine, 354-430)}
 	\end{flushright}
 \end{epigrafe}
 % ---
 
-% ---
-% RESUMOS
-% ---
 
+
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}[Resumo]
+\SingleSpacing
+De acordo com o último relatório Justiça em Números, publicado anualmente pelo Conselho Nacional de Justiça, 77,1 milhões de processos aguardavam solução no Judiciário brasileiro, sendo 5,2 milhões nos Juizados Especiais Civeis (JECs). Esses números vêm crescendo ano a ano, o que indica a necessidade de criação de mecanismos para auxiliar o Judiciário brasileiro a ser mais célere e eficaz. Assim, este trabalho visa contribuir nesse cenário aplicando as técnicas de Aprendizado de Máquina (ML) e Mineração de Textos (TM) para a previsão dos resultados dos julgamentos do JEC localizado na Universidade Federal de Santa Catarina, relacionados  a falhas nos serviços de transporte aéreo. Para isso, dividimos o problema em três partes: representação, classificação e regressão. Na primeira parte,  avaliamos a possível influência do tamanho e a especificidade dos \textit{corpora} usados para treinar \textit{word embeddings} sobre o desempenho da classificação de textos. Desse modo, \textit{word embeddings} foram treinados com base em julgamentos em português. Como resultado, descobrimos que tamanho e especificidade importam, porém o tamanho influencia os resultados até certo ponto. Na segunda parte, avaliamos se as técnicas de Aprendizado Profundo (DL) apresentam melhor desempenho do que as técnicas de ML Clássico na predição dos resultados dos julgamentos do JEC. Assim, treinamos várias técnicas de DL e ML Clássico usando dois tipos de conjunto de dados, um contendo o texto completo dos julgamentos e outro com a parte do dispositivo removida. No primeiro caso, as técnicas de DL apresentam melhor desempenho, o que significa que podem assimilar melhor as partes dos textos que explicitamente indicam o resultado. Neste último, as técnicas clássicas tiveram melhor desempenho, indicando que sem a parte do resultado estar explícita, essas técnicas podem melhor aprender como classificar a partir das demais partes do processo. Na terceira parte, nos concentramos em prever o valor da indenização por danos morais, usando técnicas de regressão. Com base em vários pipelines e na avaliação de um especialista em direito, percebemos que a qualidade de predição alcançada em tal tarefa é aceitável e pode ser útil no domínio jurídico. Assim, concluímos que foi possível prever com precisão os resultados dos julgamentos do JEC e o valor da indenização por danos morais utilizando os \textit{pipelines} propostos. 
+
+\textbf{\textsf{Palavras-chave}}: Aprendizado de Máquina. Classificação de Texto. Representação de Texto. Regressão de Texto. Juizado Especial Cível. Decisões Judiciais.
+\end{resumo}
+
+
+\input{beforetext/resumo_expandido}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
 	\SingleSpacing
 	\begin{otherlanguage*}{english}
-		Resumo traduzido para outros idiomas, neste caso, inglês. Segue o formato do resumo feito na língua vernácula. As palavras-chave traduzidas, versão em língua estrangeira, são colocadas abaixo do texto precedidas pela expressão “Keywords”, separadas por ponto.
-		   
-		\vspace{1.5em}
-		\textbf{Keywords}: Keyword 1. Keyword 2. Keyword 3.
+	
+According to the last report \textit{Justiça em Números}, annually published by the National Council of Justice, 77.1 million processes were waiting for a solution in the Brazilian judiciary, of which 5.2 million in the Special Civel Courts (JECs). Those numbers have been increasing year after year, indicating the need of creating mechanisms toto help the Brazilian Judiciary to be faster and more effective. Thus, this work aims to contribute in this scenario by applying Machine Learning (ML) and Text Mining (TM) techniques to the prediction of the results of the legal judgments from the JEC located at the Federal University of Santa Catarina, which relate to failures in air transport services. To do so, we divided the problem into three parts: representation, classification, and regression. In the first part, we evaluate whether the size and specificity of the corpora used to train word embeddings, impact the performance of text classification. We, thus, trained embeddings based on judgments in Portuguese. As a result, we discovered that size and specificity matter, however size influences the results until a certain point. In the second part, we evaluate whether Deep Learning (DL) techniques perform better than Classical ML techniques in the classification of the judgments' results from JEC. Thus, we trained several DL and Classical ML techniques using two types of the dataset, one containing the full text of the judgments and another with the result part removed. In the former, the DL techniques performed better, implying that they can better assimilate the parts  of the texts that explicitly indicate the result. In the latter, classical techniques performed better, indicating that without the explicit result part, those techniques can better learn from the other parts. In the third part, we focus on predicting the compensation value for immaterial damage, using regression techniques. Based on several pipelines and on a legal expert's evaluation, we noticed that the prediction quality achieved in such a task is acceptable and it can be helpful in the legal domain. Thus, we concluded that it was possible to accurately predict the results of the judgments from JEC and the compensation value for immaterial damage using the proposed pipelines.
+
+
+\textbf{\textsf{Keywords}}: Machine Learning. Text Classification. Text Representation. Text Regression. Special Civel Court. Legal Judgments.
 	\end{otherlanguage*}
 \end{resumo}
-
-% resumo em português
-\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
-\begin{resumo}[Resumo]
-	\SingleSpacing
-	No resumo são ressaltados o objetivo da pesquisa, o método utilizado, as discussões e os resultados com destaque apenas para os pontos principais. O resumo deve ser significativo, composto de uma sequência de frases concisas, afirmativas, e não de uma enumeração de tópicos. Não deve conter citações. Deve usar o verbo na voz ativa e na terceira pessoa do singular. O texto do resumo deve ser digitado, em um único bloco, sem espaço de parágrafo. O espaçamento entre linhas é simples e o tamanho da fonte é 12. Abaixo do resumo, informar as palavras-chave (palavras ou expressões significativas retiradas do texto) ou, termos retirados de thesaurus da área. Deve conter de 150 a 500 palavras. O resumo é elaborado de acordo com a NBR 6028.
-	
-	\textbf{Palavras-chave}: Palavra-chave 1.  Palavra-chave 2. Palavra-chave 3.
-\end{resumo}
-
-
-%% resumo em francês 
-%\begin{resumo}[Résumé]
-% \begin{otherlanguage*}{french}
-%    Il s'agit d'un résumé en français.
-% 
-%   \textbf{Mots-clés}: latex. abntex. publication de textes.
-% \end{otherlanguage*}
-%\end{resumo}
-%
-%% resumo em espanhol
-%\begin{resumo}[Resumen]
-% \begin{otherlanguage*}{spanish}
-%   Este es el resumen en español.
-%  
-%   \textbf{Palabras clave}: latex. abntex. publicación de textos.
-% \end{otherlanguage*}
-%\end{resumo}
-%% ---
 
 {%hidelinks
 	\hypersetup{hidelinks}
@@ -160,9 +161,9 @@
 	% ---
 	% inserir lista de quadros
 	% ---
-	\pdfbookmark[0]{\listofquadrosname}{loq}
-	\listofquadros*
-	\cleardoublepage
+	%\pdfbookmark[0]{\listofquadrosname}{loq}
+	%\listofquadros*
+	%\cleardoublepage
 	% ---
 	
 	% ---
@@ -182,13 +183,14 @@
 	% ---
 	% inserir lista de símbolos (devem ser declarados no preambulo)
 	% ---
-	\imprimirlistadesimbolos
+	% \imprimirlistadesimbolos
 	% ---
 	
 	% ---
 	% inserir o sumario
 	% ---
 	\pdfbookmark[0]{\contentsname}{toc}
+	
 	\tableofcontents*
 	\cleardoublepage
 	

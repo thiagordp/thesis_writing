@@ -1,0 +1,228 @@
+\section{Text Representation and Deep Learning in Legal Judgments}
+
+\subsection{Experiment's Purpose}
+
+\begin{itemize}[noitemsep]
+    \item Cronologia
+    \item Falta de representação para o juridico  em português.
+    \item Avaliar se a especificade e tamanho do corpus ajudam em alguma coisa.
+    \item Avaliar como aprendizado profundo se sai na classificação das sentenças.
+    \item Como ajuda responder a segunda pergunta?
+\end{itemize}
+
+\subsection{Dataset}
+%\subsubsection{Corpus Processing}
+
+Concerning embeddings training, the first step is to obtain the collection of legal documents from the court web portals, followed by raw text extraction from these documents. To enable us to evaluate the specificity influence of these legal corpora, we divided it into two contexts: related to general legal texts and related to air transport services text.
+
+% Warning!! Copy/Paste
+We also collected texts from other general topics (not related to legal domains) that are already compiled and freely available. Having the corpora for legal and miscellaneous contexts, we applied some processing steps to remove noise from texts. To evaluate the influence of corpus size in embeddings training, we divided these three corpora into smaller pieces based on word count.
+
+% Warning!! Copy/Paste 
+To train the embeddings it is required large text corpora to be able to get good embeddings. However, in the Brazilian Portuguese language, we could not find any dataset available on the Internet containing enough legal text corpora for our purposes. Thus, we had to build our legal corpora.
+
+% Warning!! Copy/Paste 
+Our main sources of legal text are Brazilian courts platforms. We collected judgments from the webpages of Federal Supreme Court (STF), Superior Court of Justice (STJ) and State Court of Santa Catarina (TJ-SC) \cite{STF2020, STJ2020, TJSC2020}. 
+We also collected judgments from the JusBrasil portal containing processes related only to failures on air transport service from all State Courts (TJ) from Brazil \cite{Jusbrasil2020}.
+
+% Warning!! Copy/Paste 
+Table \ref{tab:count_process} shows the number of processes acquired and word count for each Tribunal:
+
+\begin{table}[htb]
+\caption{Acquired process from Courts for Embeddings Training}
+\label{tab:count_process}
+\centering
+\begin{tabular}{@{}crrrr@{}}
+\toprule
+\textbf{Source}      & \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Collegial \\ Judgments\end{tabular}}}   & \multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Individual \\ Judgments\end{tabular}}} & \multicolumn{1}{c}{\textbf{Subtotal}} &\multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Word \\ Count\end{tabular}}} \\ \midrule
+STF                  & 64,779              & 118,910              & 183,689     & 294,937,185  \\\hdashline
+STJ                  & 101,141              & 0                    & 101,141      & 312,687,450 \\\hdashline
+TJ-SC                & 989,964              & 662,535              & 1,652,499   & 3,060,212,814  \\\hdashline
+TJs (JusBrasil)           & 34,239               & 0                    & 34,239        & 78,138,337\\ \midrule
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \textbf{TOTAL}       & 1,971,568     &  3,745,975,786\\ \bottomrule
+\end{tabular}
+
+%\fonte{\textcite{DalPont2020}.}
+\end{table}
+
+% Warning!! Copy/Paste 
+After downloading all processes, most of them in PDF and Rich Text Format (RTF) formats, we extracted raw texts from these files. We did not apply Optical Character Recognition (OCR) in scanned PDF documents, due to time limits to finish the experiments, so only digital PDFs were accounted with RTF files in Table \ref{tab:count_process}. 
+
+% Warning!! Copy/Paste 
+With the extracted texts, we applied some pre-processing steps, as discussed further in this section. 
+
+% Warning!! Copy/Paste 
+Then we built the legal text corpora containing all the processes related to all law subjects, which we call \emph{general} legal text corpora in this work. Using this base, we created another text corpora whose processes are related only to air transport and consumer law, and we call it \emph{air transport} legal text corpora.
+
+% Warning!! Copy/Paste 
+To be able to compare how good embeddings trained with legal texts perform against those created with all kinds of texts, we also created other corpora from a variety of sources. Thus, we searched for free available textual datasets. In this work, we call these texts as \emph{global} context texts. Table \ref{tab:global_corpora} shows all the global text datasets used. Then we apply some preprocessing steps, as will be described further in this section.
+
+\begin{table}[htb]
+\caption{Global context corpora}
+\label{tab:global_corpora}
+\centering
+\begin{tabular}{@{}crrc@{}}
+\toprule
+\textbf{Dataset}                   & \textbf{Documents} & \textbf{Word Count} & \textbf{Source} \\ \midrule
+Wikipedia in Portuguese            & 1,014,713          & 303,622,360         & \textcite{Wikipedia2019}                \\\hdashline
+Brazilian Literature Books         & 169                & 37,848,783          & \textcite{Tatman2017}                 \\\hdashline
+Old Newspapers                     & 617,627            & 26,441,581          &         \textcite{Tan2020}     \\\hdashline
+Folha de São Paulo News            & 165,641            & 74,594,367          &                     \textcite{Marlessonn2019}             \\\hdashline
+HC News Corpus                     & 494,128            & 27,170,063          &        \textcite{Christensen2016}         \\\hdashline
+Blogspot Posts                     & 2,181,073          & 696,657,915         &          \textcite{Santos2018}       \\\hdashline
+Wikihow Instructions               & 786,283            & 22,471,312          &        \textcite{Chocron2018}         \\ \midrule
+\multicolumn{1}{r}{\textbf{TOTAL}} & 5,259,634          & 1,188,806,381       & \textbf{}       \\ \bottomrule
+\end{tabular}
+
+% \fonte{\textcite{DalPont2020}.}
+\end{table}
+
+The dataset for evaluation in the classification text is the same from Section X. So the results may be directly  compared to those presented in that Section.
+
+\subsection{Pipeline}
+
+PREPARE PIPELINE
+
+% Warning!! Copy/Paste
+% Pré-processamento
+After text extraction from the documents, we applied some pre-processing steps, which are required before training the embeddings or text classification. The first of them was the conversion to lower case. Then punctuation marks were removed, as well as special characters and some symbol characters. We removed stopwords neither apply stemmization or lemmatization, following the literature  \cite{Mikolov2013, Pennington2014}.
+
+% Warning!! Copy/Paste
+% Sobre a divisão da base maior em bases de tamanho menor
+In relation to our three corpora used in embeddings training, which comprising 3.7 billion, 100 million  and 1.19 bilion words for \emph{general}, \emph{air transport} and \emph{global} corpora, respectively, we created others based on them according to the following smaller corpora sizes, considering the word count: 1,000; 10,000; 50,000; 100,000; 200,000; 500,000; 1,000,000; 5,000,000; 10,000,000; 25,000,000; 100,000,000; 500,000,000; 750,000,000 and 1,000,000,000.
+
+% Warning!! Copy/Paste
+% Porque dividimos nesses tamanhos de base.
+We choose these corpora sizes to be able to compare the variation on evaluation metrics while increasing corpora size. For the air transport context, we could not embrace all these sizes due to limited corpora available. The largest sub-base had  100 million words for this context. 
+
+% Warning!! Copy/Paste
+% Cada uma dessas bases vai ser usada pra treinar um embedding diferente.
+Finally, each of these smaller corpora was used to train one different word embeddings representation.
+
+
+%\subsubsection{Embeddings Training}
+
+% Warning!! Copy/Paste
+% Usamos esse algoritmo pois tem dado bons resultados e também pelo tempo de treinamento ser bem menor
+In this work, we chose GloVe representation due to its good results in many NLP tasks, including text classification, and also for its training time which is significantly less than other techniques like Word2Vec and FastText \cite{Pennington2014}.  
+% Parâmetros do algoritmo
+In terms of GloVe parameters, we kept most of the default values, except for windows size, training iterations, and vector size, which were set to 5, 100, and 100, respectively. With these values, we achieved better results in text classification.
+
+% Warning!! Copy/Paste
+Considering the corpus sizes described in Section \ref{sec:corpus_construction} and the parameters above described, we trained 15 representations for \emph{general} and \emph{global} contexts bases. For \textit{air transport} context base, we trained 11 embeddings.
+
+%\subsection{Embeddings Evaluation in Legal Text Classification}
+
+% Warning!! Copy/Paste
+To evaluate the GloVe embeddings representations, we applied each of them to the task of text classification on judgments from JEC/UFSC. Also, we used Convolutional Neural Networks as a classification model based on the literature \cite{Kim2014}. Fig. \ref{fig:cnn_model} illustrates this model.
+
+% Demonstrar um gráfico com a CNN.
+\begin{figure}[htb]
+    \centering
+    \caption{CNN Model for Text Classification}
+    \label{fig:cnn_model}
+    \includegraphics[width=\textwidth]{images/chapters/cnn_architecture.png}
+    
+    \fonte{\textcite{Kim2014}.}
+\end{figure}
+
+% Warning!! Copy/Paste
+% A CNN mostrada leva em conta a ordem das palavras
+This CNN takes into account the order of the words by stacking the corresponding embeddings for each word as they occur in the text. 
+% São aplicados filtros de convolução com diversas dimensão, onde a largura corresponde ao tamanho dos embeddings e a altura o número de embeddings que serão englobados pelo filtro.
+% Warning!! Copy/Paste
+Them it applies multiple convolutional masks with different dimensions that correspond to the red and yellow contours in Fig. \ref{fig:cnn_model}. Mask widths are equal to word embedding size while the heights can vary. In this context, mask height can be related to the idea of N-Grams, since they embrace multiple embeddings at the same time. 
+% No original tinha 3 tamanhos de filtro, mas incluímos um mais que melhorou os resultados. Em número de filtros, tinha 100 e abaixamos pra 10 sem piorar o desempenho, mas tornando
+% Warning!! Copy/Paste
+In the original model, these heights were set to 3, 4, and 5. We added one more mask of height 2, which increased classification metrics. Also, we set to 10 the number of masks for each of these sizes, without affecting our results, but decreasing the required training time. 
+
+% Warning!! Copy/Paste
+% Explicar sobre como esse modelo foi utilizado
+In this work, we applied each of the embeddings trained in conjunction with the CNN described in the classification of JEC/UFSC judgments, where Out of Vocabulary (OOV) words are replaced by an vector of random values. Thus, we trained and tested 41 models. Furthermore, due to the stochastic nature of neural networks training methods \cite{Cohen1995}, each of these models was trained and tested 200 times and the resulting evaluation metrics were averaged. 
+
+% Warning!! Copy/Paste
+Finally, we compare the performance in classification using Accuracy and Macro F1-Score.
+
+
+% \subsection{Results Analysis and Discussion}
+
+% % Warning!! Copy/Paste
+% In the following sections, we present and discuss our results for text classification using trained embeddings for \emph{global}, \emph{general}, and \emph{air transport} contexts with multiple corpus training sizes. %Then, these results are discussed from contexts and corpus size perspectives.
+
+% Warning!! Copy/Paste
+% Experimental results
+
+\subsection{Results and Analysis}
+%\subsection{Experimental Results}
+
+% Warning!! Copy/Paste
+Following the steps presented in section~\ref{sec:experiments}, we trained all 41 word embeddings representations for GloVe. 
+
+% Warning!! Copy/Paste
+To illustrate how these embeddings behave, in Fig.~\ref{fig:projection}, we used Principal Component Analysis (PCA) to create a projection in two dimensions of a set of words from \textit{general} context embedding trained with 1 billion words.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Word Embeddings Projection}
+    \label{fig:projection}
+    \includegraphics[width=\textwidth]{images/chapters/projection.pdf}
+    
+    % \fonte{\textcite{DalPont2020}.}
+\end{figure}
+
+% Warning!! Copy/Paste
+%%%% FIGURE- Embeddings projection
+Using each embedding, we trained and tested CNNs for text classification in JEC/UFSC judgments. These two steps were repeated 200 times, and the evaluation metrics were averaged for each group of repetitions.
+
+% Warning!! Copy/Paste
+In Fig. \ref{fig:accuracy_plot} and \ref{fig:f1_plot}, we present the results, for accuracy and F1-Score, respectively, from test data applied to each CNN model. These results are related to embeddings trained with \textit{general}, \textit{air transport}, \textit{global} texts. 
+The x-axis denotes the corpus sizes used to train the embeddings, while the y-axis represents accuracy or F1-Score. Each data point represents the average of the evaluation metric, after 200 train and test repetitions using each specific embedding. %Finally, we delimited y-axis to smaller intervals so the metrics variations could be visible.
+
+
+% JH In the next section, we discuss these results.
+
+\begin{figure}[htb]
+    \centering
+    \caption{Accuracy for test set from CNN model}
+    \label{fig:accuracy_plot}
+    \includegraphics[width=\textwidth]{images/chapters/acc_mean_final.pdf}
+    
+    % \fonte{\textcite{DalPont2020}.}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \caption{Macro F1-Score for test set from CNN model}
+    \label{fig:f1_plot}
+    \includegraphics[width=\textwidth]{images/chapters/f1_score_mean_final.pdf}
+    
+    % \fonte{\textcite{DalPont2020}.}
+\end{figure}
+
+% Evaluations from context perspective
+%\subsection{Discussion from Context Perspective}
+
+% Warning!! Copy/Paste
+In this section, we will consider the first part of our research question: Does the specificity of the corpora in embeddings training contribute to the quality of the classification? 
+
+% Warning!! Copy/Paste
+In terms of accuracy, when we compare \emph{global} against others (Fig.~\ref{fig:accuracy_plot}), we have that higher text specificity leads to better results, for most of the corpus sizes used for embeddings training. Furthermore, when comparing \textit{general} and \textit{air transport} curves, there is a significant difference in accuracy only for the lowest and highest x-values. 
+However, in terms of F1-Score, as shown in Fig. \ref{fig:f1_plot}, our observations change, once \textit{general} and \textit{air transport} curves have a similar shape. Also, for the highest corpus sizes, \textit{general} and \textit{global} curves converge to similar values of F1-Score. 
+%
+% Warning!! Copy/Paste
+We believe that these differences in accuracy and F1-Score emerge from the fact that our dataset to text classification is imbalanced, once the former does not take this fact into account, while the latter does. However, this result still requires further investigation. 
+% Warning!! Copy/Paste
+In general, we can note that for smaller corpora size for embeddings training, text specificity has a more impact than for large sizes.
+
+
+% Evaluation from corpus size perspective
+%\subsection{Discussion from Corpus Size Perspective}
+
+% Warning!! Copy/Paste
+In this section, we will consider the second part of our research question: How does the corpus size contribute to the embedding quality?
+
+% Warning!! Copy/Paste
+When we observe both accuracy and F1-Score measures from Fig.~\ref{fig:accuracy_plot} and \ref{fig:f1_plot}, it is clear the tendency for improvement while increasing corpus size. However, the metrics converge with the largest corpus sizes. There are two exceptions. The first one occurs with smaller values of corpus sizes for \textit{global} curve, as it decreases in F1-Score measures. The second corresponds to the last data point in \textit{air transport} curves. The former can happen we the classifier performs poorly for some classes while gets better in others. The latter may indicate that those curves could improve if we had more significant corpus sizes related to that context.
+
+% Warning!! Copy/Paste
+In general, we can note that the greater the corpus size in embeddings training, the better are the results. However, this impact decreases as the corpus size increases until a point where more words in the corpus have little impact on the results. %On the other hand, in the smaller corpus, the impact of increasing them is higher in relation to the greater corpus.
